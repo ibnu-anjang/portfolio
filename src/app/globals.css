@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090f;
-  --foreground: #f4f4f5;
-  --muted: #a1a1aa;
-  --border: rgba(255, 255, 255, 0.08);
-  --card: rgba(255, 255, 255, 0.03);
-  --primary: #6366f1;
+  --background: #0b080c;
+  --foreground: #eae5ec;
+  --muted: #9d93a3;
+  --border: rgba(234, 229, 236, 0.08);
+  --accent: #c2a4ff;
+  --accent-deep: #a87cff;
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --color-card: var(--card);
-  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -36,5 +36,19 @@ body {
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.4);
+  background: rgba(168, 124, 255, 0.45);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 34s linear infinite reverse;
 }

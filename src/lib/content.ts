@@ -42,6 +42,23 @@ export const site = {
   instagram: "",
 };
 
+// Skill/tool yang muncul di marquee Tech Stack.
+export const skills = [
+  "Next.js",
+  "TypeScript",
+  "React",
+  "Tailwind CSS",
+  "Supabase",
+  "PostgreSQL",
+  "Node.js",
+  "Flutter",
+  "Dart",
+  "Firebase",
+  "Riverpod",
+  "Git",
+  "Vercel",
+];
+
 export const services: Service[] = [
   {
     name: "Web Development",

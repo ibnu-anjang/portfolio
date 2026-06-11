@@ -5,7 +5,7 @@ import { Send } from "lucide-react";
 import { services, site } from "@/lib/content";
 
 const input =
-  "h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white placeholder:text-zinc-500 transition focus:border-indigo-400/60 focus:outline-none focus:ring-2 focus:ring-indigo-500/20";
+  "h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white placeholder:text-zinc-500 transition focus:border-[#c2a4ff]/60 focus:outline-none focus:ring-2 focus:ring-[#a87cff]/20";
 
 export function LeadForm() {
   const [name, setName] = useState("");
@@ -56,11 +56,11 @@ export function LeadForm() {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={4}
-        className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-zinc-500 transition focus:border-indigo-400/60 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+        className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-zinc-500 transition focus:border-[#c2a4ff]/60 focus:outline-none focus:ring-2 focus:ring-[#a87cff]/20"
       />
       <button
         type="submit"
-        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-medium text-white shadow-lg shadow-indigo-500/25 transition hover:shadow-indigo-500/40 hover:brightness-110"
+        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] font-medium text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/40 hover:brightness-110"
       >
         <Send className="size-4" />
         Kirim via WhatsApp

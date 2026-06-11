@@ -80,6 +80,34 @@ export const services: Service[] = [
   },
 ];
 
+export type ProcessStep = {
+  title: string;
+  description: string;
+};
+
+export const processSteps: ProcessStep[] = [
+  {
+    title: "Konsultasi Gratis",
+    description:
+      "Ceritakan kebutuhan Anda via WhatsApp. Kita diskusi tujuan, fitur, dan timeline — tanpa biaya, tanpa komitmen.",
+  },
+  {
+    title: "Penawaran & Scope",
+    description:
+      "Saya kirim penawaran tertulis: rincian fitur, estimasi waktu, dan harga. Jelas di awal, tidak ada biaya tersembunyi.",
+  },
+  {
+    title: "Pengerjaan",
+    description:
+      "Develop dengan update progres berkala. Anda bisa lihat preview-nya langsung dan kasih masukan di tengah jalan.",
+  },
+  {
+    title: "Serah Terima & Garansi",
+    description:
+      "Website/aplikasi live dan jadi milik Anda sepenuhnya — termasuk source code. Ada masa garansi untuk perbaikan bug.",
+  },
+];
+
 // Project ASLI kamu. Tambah/kurangi sesuai kenyataan. Link & gambar opsional.
 export const projects: Project[] = [
   {

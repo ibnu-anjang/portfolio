@@ -8,10 +8,20 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
-  description: site.tagline,
-  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
-    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-    : undefined,
+  description: site.about,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibnuportfolio.vercel.app"),
+  openGraph: {
+    title: `${site.name} — ${site.role}`,
+    description: site.tagline,
+    type: "website",
+    locale: "id_ID",
+    siteName: site.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.role}`,
+    description: site.tagline,
+  },
 };
 
 export default function RootLayout({

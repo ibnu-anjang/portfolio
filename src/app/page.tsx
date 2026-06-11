@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import {
   achievements,
+  processSteps,
   projects,
   services,
   site,
@@ -244,6 +245,41 @@ export default function Home() {
                     </Reveal>
                   );
                 })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Process */}
+        {processSteps.length > 0 && (
+          <section className="border-t border-white/[0.06] py-28">
+            <div className="mx-auto max-w-6xl px-5">
+              <Reveal>
+                <BigHeading>Cara Kerja</BigHeading>
+                <p className="mt-4 text-center text-zinc-500">
+                  Dari ide sampai live — prosesnya transparan dari awal
+                </p>
+              </Reveal>
+              <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {processSteps.map((step, i) => (
+                  <Reveal key={step.title} delay={i * 100}>
+                    <div className="relative h-full rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7">
+                      <div className="text-5xl font-bold text-[#c2a4ff]/25">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <h3 className="mt-4 font-semibold">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                        {step.description}
+                      </p>
+                      {i < processSteps.length - 1 && (
+                        <ArrowRight
+                          aria-hidden
+                          className="absolute -right-4 top-1/2 hidden size-4 -translate-y-1/2 text-zinc-600 lg:block"
+                        />
+                      )}
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </div>
           </section>

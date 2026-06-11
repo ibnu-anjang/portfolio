@@ -21,7 +21,7 @@ export function Intro() {
     >
       <div className="absolute inset-x-0 top-0 flex items-center justify-between px-6 py-6 text-sm font-bold tracking-wide sm:px-10">
         <span>{site.name}</span>
-        <span className="text-black/50">Portfolio © {new Date().getFullYear()}</span>
+        <span className="text-black/50">Portofolio © {new Date().getFullYear()}</span>
       </div>
       <button
         onClick={open}

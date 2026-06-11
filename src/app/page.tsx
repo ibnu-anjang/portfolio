@@ -83,7 +83,7 @@ export default function Home() {
               Layanan
             </a>
             <a href="#portfolio" className="hidden rounded-full px-4 py-2 transition hover:bg-white/5 hover:text-white sm:block">
-              Portfolio
+              Portofolio
             </a>
             <a
               href="#kontak"
@@ -146,7 +146,7 @@ export default function Home() {
                   href="#portfolio"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 font-medium text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5"
                 >
-                  Lihat Portfolio
+                  Lihat Portofolio
                 </a>
               </div>
             </Reveal>

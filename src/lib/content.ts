@@ -117,7 +117,7 @@ export const projects: Project[] = [
     description:
       "Web app pencatatan & analitik trading: equity curve, KPI, dan manajemen risiko. Auth + database dengan RLS.",
     stack: ["Next.js", "Supabase", "Tailwind"],
-    link: "https://trading-jurnal.vercel.app",
+    link: "https://trading-jurnal-five.vercel.app",
     imageUrl: "/projects/trading-jurnal.webp",
   },
   {

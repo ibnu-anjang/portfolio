@@ -33,9 +33,7 @@ export const site = {
   about:
     "Saya membantu bisnis dan personal membangun produk digital — dari landing page, web app, sampai aplikasi mobile. Fokus saya: kode bersih, performa kencang, dan hasil yang benar-benar dipakai pengguna.",
   email: "ibnumaulidi08@gmail.com",
-  // TODO: nomor WhatsApp format internasional tanpa "+" dan tanpa "0" di depan.
-  // Contoh untuk 0812-3456-7890 → "6281234567890"
-  whatsapp: "6280000000000",
+  whatsapp: "6285179940204",
   github: "https://github.com/ibnu-anjang",
   // TODO (opsional): isi kalau ada. Kosongkan ("") kalau tidak mau ditampilkan.
   linkedin: "",

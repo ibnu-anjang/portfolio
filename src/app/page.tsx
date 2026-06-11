@@ -108,9 +108,17 @@ export default function Home() {
           />
           <div className="relative mx-auto w-full max-w-6xl px-5 pb-20 pt-32">
             <Reveal>
-              <p className="text-lg text-zinc-300 sm:text-xl">
-                👋 Halo! Saya
-              </p>
+              <div className="flex items-center gap-4">
+                {site.avatarUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={site.avatarUrl}
+                    alt={site.name}
+                    className="size-16 rounded-full object-cover ring-2 ring-[#a87cff]/60 sm:size-20"
+                  />
+                )}
+                <p className="text-lg text-zinc-300 sm:text-xl">👋 Halo! Saya</p>
+              </div>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mt-2 text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-9xl">

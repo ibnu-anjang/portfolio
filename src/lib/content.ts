@@ -30,6 +30,8 @@ export const site = {
   name: "Ibnu Maulidi",
   role: "Web & Mobile Developer",
   tagline: "Bikin website & aplikasi yang rapi, cepat, dan siap produksi.",
+  // Bagian tagline yang di-highlight dengan gradient. Harus substring persis dari tagline.
+  taglineAccent: "rapi, cepat",
   about:
     "Saya membantu bisnis dan personal membangun produk digital — dari landing page, web app, sampai aplikasi mobile. Fokus saya: kode bersih, performa kencang, dan hasil yang benar-benar dipakai pengguna.",
   email: "ibnumaulidi08@gmail.com",
@@ -38,7 +40,6 @@ export const site = {
   // TODO (opsional): isi kalau ada. Kosongkan ("") kalau tidak mau ditampilkan.
   linkedin: "",
   instagram: "",
-  primaryColor: "#4f46e5",
 };
 
 export const services: Service[] = [

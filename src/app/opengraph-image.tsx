@@ -95,7 +95,7 @@ export default function OgImage() {
             display: "flex",
           }}
         >
-          ibnuportfolio.vercel.app
+          ibnuportofolio.vercel.app
         </div>
       </div>
     ),

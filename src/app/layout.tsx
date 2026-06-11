@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
   description: site.about,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibnuportfolio.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibnuportofolio.vercel.app"),
   openGraph: {
     title: `${site.name} — ${site.role}`,
     description: site.tagline,

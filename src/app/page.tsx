@@ -102,12 +102,12 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative flex min-h-svh flex-col justify-start lg:justify-center overflow-hidden pt-16 sm:pt-24">
+        <section className="relative overflow-hidden pt-20 pb-12 sm:pt-28 sm:pb-20">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_85%_35%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
           />
-          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-12 pt-2 sm:py-16 lg:py-20">
+          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
             <div className="grid gap-8 lg:grid-cols-12 lg:gap-10 lg:items-center">
               {/* Left Column: Hook & Value Proposition */}
               <div className="lg:col-span-7">
@@ -130,7 +130,7 @@ export default function Home() {
                   </div>
                 </Reveal>
                 <Reveal delay={80}>
-                  <h1 className="mt-4 sm:mt-5 text-3xl sm:text-5xl lg:text-[3.8rem] font-bold leading-[1.15] sm:leading-[1.08] tracking-tight text-white">
+                  <h1 className="mt-4 sm:mt-5 text-3xl sm:text-5xl lg:text-[3.8rem] font-bold leading-[1.18] sm:leading-[1.08] tracking-tight text-white">
                     Bikin Website & Aplikasi Mobile yang{" "}
                     <GradientText>Rapi, Cepat & Siap Pakai.</GradientText>
                   </h1>
@@ -190,8 +190,8 @@ export default function Home() {
                 </Reveal>
               </div>
 
-              {/* Right Column: Visual Hook Showcase Card */}
-              <div className="lg:col-span-5">
+              {/* Right Column: Visual Hook Showcase Card (Desktop only, so mobile doesn't get clipped/bloated) */}
+              <div className="hidden lg:block lg:col-span-5">
                 <Reveal delay={150}>
                   <div className="relative">
                     <div

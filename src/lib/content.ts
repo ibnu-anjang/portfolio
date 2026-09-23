@@ -27,36 +27,34 @@ export type Testimonial = {
 };
 
 export const site = {
-  name: "Ibnu Maulidi",
+  name: "Ibnu Anjang",
   role: "Web & Mobile Developer",
-  tagline: "Bikin website & aplikasi yang rapi, cepat, dan siap produksi.",
-  // Bagian tagline yang di-highlight dengan gradient. Harus substring persis dari tagline.
+  tagline: "Membangun website & aplikasi yang rapi, cepat, dan siap produksi.",
   taglineAccent: "rapi, cepat",
   about:
-    "Saya membantu bisnis dan personal membangun produk digital — dari landing page, web app, sampai aplikasi mobile. Fokus saya: kode bersih, performa kencang, dan hasil yang benar-benar dipakai pengguna.",
+    "Saya membantu bisnis dan personal membangun produk digital, mulai dari landing page, web app modern, hingga aplikasi mobile. Fokus utama saya: kode terstruktur, performa cepat, dan hasil yang benar-benar siap pakai.",
   email: "ibnumaulidi08@gmail.com",
-  // Foto profil di hero. Ganti file public/avatar.jpg untuk update. Kosongkan ("") untuk sembunyikan.
   avatarUrl: "/avatar.jpg",
   whatsapp: "6285179940204",
   github: "https://github.com/ibnu-anjang",
-  // TODO (opsional): isi kalau ada. Kosongkan ("") kalau tidak mau ditampilkan.
   linkedin: "",
   instagram: "",
 };
 
-// Skill/tool yang muncul di marquee Tech Stack.
+// Skill/tool yang muncul di Tech Stack.
 export const skills = [
   "Next.js",
   "TypeScript",
   "React",
   "Tailwind CSS",
+  "Flutter",
+  "Dart",
+  "Riverpod",
+  "Firebase",
   "Supabase",
   "PostgreSQL",
   "Node.js",
-  "Flutter",
-  "Dart",
-  "Firebase",
-  "Riverpod",
+  "Docker",
   "Git",
   "Vercel",
 ];
@@ -65,19 +63,19 @@ export const services: Service[] = [
   {
     name: "Web Development",
     description:
-      "Landing page, company profile, sampai web app & dashboard. Next.js + Tailwind, responsif dan SEO-friendly.",
+      "Landing page, company profile, sampai web app dan dashboard interaktif. Next.js dan Tailwind, cepat, responsif di HP/desktop, dan SEO-ready.",
     priceText: "Mulai dari nego",
   },
   {
-    name: "Mobile App",
+    name: "Mobile App (Flutter)",
     description:
-      "Aplikasi Android/iOS dengan Flutter + Firebase. Auth, realtime database, dan deploy ke store.",
+      "Aplikasi Android dan iOS dengan Flutter dan Firebase. Autentikasi, database realtime, state management Riverpod, dan siap dipublikasikan.",
     priceText: "Mulai dari nego",
   },
   {
     name: "Backend & Integrasi",
     description:
-      "Database, REST/API, autentikasi, dan integrasi layanan pihak ketiga (Supabase, payment, dll).",
+      "Perancangan database, REST API, integrasi Supabase/Firebase, manajemen environment dengan Docker, serta deployment ke cloud.",
     priceText: "Mulai dari nego",
   },
 ];
@@ -89,55 +87,65 @@ export type ProcessStep = {
 
 export const processSteps: ProcessStep[] = [
   {
-    title: "Konsultasi Gratis",
+    title: "Konsultasi Kebutuhan",
     description:
-      "Ceritakan kebutuhan Anda via WhatsApp. Kita diskusi tujuan, fitur, dan timeline — tanpa biaya, tanpa komitmen.",
+      "Ceritakan kebutuhan project Anda via WhatsApp. Kita bahas tujuan, fitur, dan estimasi waktu secara santai dan transparan.",
   },
   {
     title: "Penawaran & Scope",
     description:
-      "Saya kirim penawaran tertulis: rincian fitur, estimasi waktu, dan harga. Jelas di awal, tidak ada biaya tersembunyi.",
+      "Saya siapkan rincian fitur, target timeline, dan estimasi biaya yang disepakati bersama sebelum pengerjaan dimulai.",
   },
   {
-    title: "Pengerjaan",
+    title: "Proses Pengerjaan",
     description:
-      "Develop dengan update progres berkala. Anda bisa lihat preview-nya langsung dan kasih masukan di tengah jalan.",
+      "Pengembangan dengan update progres berkala. Anda bisa melihat preview live dan memberikan feedback langsung.",
   },
   {
-    title: "Serah Terima & Garansi",
+    title: "Peluncuran & Garansi",
     description:
-      "Website/aplikasi live dan jadi milik Anda sepenuhnya — termasuk source code. Ada masa garansi untuk perbaikan bug.",
+      "Aplikasi dideploy ke production, source code diserahkan penuh, dilengkapi masa garansi untuk memastikan kelancaran sistem.",
   },
 ];
 
-// Project ASLI kamu. Tambah/kurangi sesuai kenyataan. Link & gambar opsional.
+// Project nyata dari GitHub ibnu-anjang
 export const projects: Project[] = [
   {
     title: "Trading Jurnal",
     description:
-      "Web app pencatatan & analitik trading: equity curve, KPI, dan manajemen risiko. Auth + database dengan RLS.",
-    stack: ["Next.js", "Supabase", "Tailwind"],
+      "Web app analitik & pencatatan trading: equity curve, KPI win-rate, dan risk management. Dilengkapi autentikasi dan database dengan Row Level Security.",
+    stack: ["Next.js", "Supabase", "Tailwind CSS", "TypeScript"],
     link: "https://trading-jurnal-five.vercel.app",
     imageUrl: "/projects/trading-jurnal.webp",
   },
   {
-    title: "Template Flutter + Firebase",
+    title: "SekolahKu (Data Siswa)",
     description:
-      "Starter aplikasi mobile dengan arsitektur Riverpod, auth Firebase, dan struktur siap-pakai untuk proyek baru.",
-    stack: ["Flutter", "Firebase", "Riverpod"],
-    link: "",
+      "Aplikasi mobile manajemen data siswa berbasis Flutter & Firebase Firestore dengan arsitektur Riverpod, plus prototipe web interaktif 1:1 high-fidelity.",
+    stack: ["Flutter", "Firebase", "Riverpod", "Dart"],
+    link: "https://github.com/ibnu-anjang/Data-Management-Siswa",
     imageUrl: "",
   },
-  // TODO: tambahkan project nyata lain di sini.
+  {
+    title: "GAMES-HUB",
+    description:
+      "Portal kumpulan game web modern yang dapat langsung dimainkan di browser, dibangun menggunakan Next.js 16 dan Tailwind CSS v4.",
+    stack: ["Next.js 16", "Tailwind v4", "TypeScript"],
+    link: "https://github.com/ibnu-anjang/GAMES-HUB",
+    imageUrl: "/projects/games-hub.webp",
+  },
+  {
+    title: "Simple Cash Tracker",
+    description:
+      "Aplikasi pencatatan kas kelas terstruktur dengan PHP dan MySQL/MariaDB, mendukung containerized development via Docker maupun XAMPP.",
+    stack: ["PHP", "MySQL", "Docker", "XAMPP"],
+    link: "https://github.com/ibnu-anjang/Simple-Cash-Tracker",
+    imageUrl: "",
+  },
 ];
 
-// TODO: ganti dengan angka ASLI. Hapus yang belum punya datanya — jangan karang.
-export const achievements: Achievement[] = [
-  { metric: "10+", label: "Proyek diselesaikan" },
-  { metric: "3+", label: "Tahun ngoding" },
-  { metric: "100%", label: "On-time delivery" },
-];
+// Hapus data statistik palsu sesuai aturan R-17 (Empty is better than deceptive)
+export const achievements: Achievement[] = [];
 
-// Testimoni HARUS asli. Biarkan array kosong [] kalau belum punya —
-// lebih baik kosong daripada palsu di depan calon client.
+// Testimoni: biarkan kosong jika belum ada review tertulis dari klien
 export const testimonials: Testimonial[] = [];

@@ -7,6 +7,7 @@ import {
   Quote,
   Server,
   Smartphone,
+  Code2,
 } from "lucide-react";
 import {
   achievements,
@@ -18,7 +19,6 @@ import {
   testimonials,
 } from "@/lib/content";
 import { CursorGlow } from "@/components/cursor-glow";
-import { Intro } from "@/components/intro";
 import { LeadForm } from "@/components/lead-form";
 import { Reveal } from "@/components/reveal";
 
@@ -43,12 +43,12 @@ function GradientText({ children }: { children: React.ReactNode }) {
 function SkillMarquee({ reverse = false }: { reverse?: boolean }) {
   const items = reverse ? [...skills].reverse() : skills;
   return (
-    <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+    <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
       <div className={`flex w-max ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
         {[...items, ...items].map((s, i) => (
           <span
             key={i}
-            className="mx-2.5 inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-medium text-zinc-300 sm:text-base"
+            className="mx-1.5 sm:mx-2.5 inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-base font-medium text-zinc-300"
           >
             {s}
           </span>
@@ -60,7 +60,7 @@ function SkillMarquee({ reverse = false }: { reverse?: boolean }) {
 
 function BigHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-center text-4xl font-medium uppercase tracking-tight sm:text-6xl lg:text-7xl">
+    <h2 className="text-center text-3xl font-bold uppercase tracking-tight sm:text-6xl lg:text-7xl">
       {children}
     </h2>
   );
@@ -69,25 +69,30 @@ function BigHeading({ children }: { children: React.ReactNode }) {
 export default function Home() {
   return (
     <>
-      <Intro />
       <CursorGlow />
 
-      <header className="fixed inset-x-0 top-0 z-30 border-b border-white/[0.06] bg-[#0b080c]/80 backdrop-blur-xl">
-        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <a href="#" className="flex items-center gap-2.5 text-[15px] font-bold">
+      <header className="fixed inset-x-0 top-0 z-30 border-b border-white/[0.06] bg-[#0b080c]/85 backdrop-blur-xl">
+        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+          <a href="#" className="flex items-center gap-2.5 text-sm sm:text-[15px] font-bold tracking-tight">
             <span className="inline-block size-2.5 rounded-full bg-gradient-to-br from-[#c2a4ff] to-[#a87cff]" />
             {site.name}
           </a>
-          <div className="flex items-center gap-1 text-sm text-zinc-400">
-            <a href="#layanan" className="hidden rounded-full px-4 py-2 transition hover:bg-white/5 hover:text-white sm:block">
-              Layanan
-            </a>
-            <a href="#portfolio" className="hidden rounded-full px-4 py-2 transition hover:bg-white/5 hover:text-white sm:block">
+          <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-zinc-400">
+            <a
+              href="#portfolio"
+              className="rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white"
+            >
               Portofolio
             </a>
             <a
+              href="#layanan"
+              className="hidden sm:block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white"
+            >
+              Layanan
+            </a>
+            <a
               href="#kontak"
-              className="ml-2 rounded-full bg-[#eae5ec] px-4 py-2 font-medium text-black transition hover:bg-[#c2a4ff]"
+              className="ml-1 sm:ml-2 inline-flex min-h-[38px] sm:min-h-[40px] items-center rounded-full bg-[#eae5ec] px-3.5 sm:px-4 py-2 font-medium text-black transition hover:bg-[#c2a4ff]"
             >
               Hubungi
             </a>
@@ -97,106 +102,108 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative flex min-h-svh items-center overflow-hidden">
+        <section className="relative flex min-h-[calc(100dvh-4rem)] sm:min-h-svh items-center overflow-hidden">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_80%_40%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
           />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(234,229,236,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(234,229,236,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent)]"
-          />
-          <div className="relative mx-auto w-full max-w-6xl px-5 pb-20 pt-32">
+          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-14 pt-24 sm:pb-20 sm:pt-32">
             <Reveal>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 {site.avatarUrl && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={site.avatarUrl}
                     alt={site.name}
-                    className="size-16 rounded-full object-cover ring-2 ring-[#a87cff]/60 sm:size-20"
+                    className="size-14 sm:size-20 rounded-full object-cover ring-2 ring-[#a87cff]/60"
                   />
                 )}
-                <p className="text-lg text-zinc-300 sm:text-xl">👋 Halo! Saya</p>
+                <div>
+                  <p className="text-base sm:text-xl text-zinc-300">👋 Halo! Saya</p>
+                  <p className="text-xs sm:hidden font-medium text-[#c2a4ff] mt-0.5">{site.role}</p>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="mt-2 text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-9xl">
+              <h1 className="mt-3 sm:mt-2 text-5xl font-bold leading-[1.0] tracking-tight sm:text-8xl lg:text-9xl">
                 {site.name.split(" ")[0]}
                 <br />
                 <GradientText>{site.name.split(" ").slice(1).join(" ")}</GradientText>
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p className="mt-8 text-xl font-medium text-zinc-200 sm:text-2xl">{site.role}</p>
-              <p className="mt-3 max-w-xl text-pretty leading-relaxed text-zinc-400">
+              <p className="hidden sm:block mt-8 text-xl font-medium text-zinc-200 sm:text-2xl">{site.role}</p>
+              <p className="mt-4 sm:mt-3 max-w-xl text-pretty text-sm sm:text-base leading-relaxed text-zinc-400">
                 {site.about}
               </p>
             </Reveal>
             <Reveal delay={300}>
-              <div className="mt-10 flex flex-wrap items-center gap-3">
+              <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
                   href="#kontak"
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-8 py-3.5 font-medium text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110"
+                  className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-8 py-3.5 font-medium text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
                 >
                   Minta Penawaran
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a
                   href="#portfolio"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 font-medium text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5"
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3.5 font-medium text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
                 >
                   Lihat Portofolio
                 </a>
               </div>
             </Reveal>
             <Reveal delay={400}>
-              <div className="mt-12 flex items-center gap-5 text-zinc-500">
-                {site.github && (
+              <div className="mt-8 sm:mt-12 flex flex-wrap items-center gap-3 sm:gap-4 text-zinc-500">
+                <div className="flex items-center gap-2">
+                  {site.github && (
+                    <a
+                      href={site.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                      className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                    >
+                      <GithubIcon className="size-5" />
+                    </a>
+                  )}
                   <a
-                    href={site.github}
+                    href={`mailto:${site.email}`}
+                    aria-label="Email"
+                    className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                  >
+                    <Mail className="size-5" />
+                  </a>
+                  <a
+                    href={`https://wa.me/${site.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    className="transition hover:text-[#c2a4ff]"
+                    aria-label="WhatsApp"
+                    className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                   >
-                    <GithubIcon className="size-5" />
+                    <MessageCircle className="size-5" />
                   </a>
-                )}
-                <a href={`mailto:${site.email}`} aria-label="Email" className="transition hover:text-[#c2a4ff]">
-                  <Mail className="size-5" />
-                </a>
-                <a
-                  href={`https://wa.me/${site.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                  className="transition hover:text-[#c2a4ff]"
-                >
-                  <MessageCircle className="size-5" />
-                </a>
-                <span className="ml-1 inline-flex items-center gap-2 text-sm">
-                  <span className="relative flex size-2">
-                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                    <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
-                  </span>
-                  Terbuka untuk proyek baru
-                </span>
+                </div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1.5 text-xs text-emerald-400">
+                  <span className="size-1.5 rounded-full bg-emerald-400" />
+                  Terbuka untuk project baru
+                </div>
               </div>
             </Reveal>
           </div>
         </section>
 
-        {/* Achievements */}
+        {/* Achievements (Hanya muncul jika ada data nyata) */}
         {achievements.length > 0 && (
           <section className="border-y border-white/[0.06] bg-white/[0.02]">
-            <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-white/[0.06] px-5 sm:grid-cols-3">
+            <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-white/[0.06] px-4 sm:px-6 sm:grid-cols-3">
               {achievements.map((a) => (
-                <div key={a.label} className="px-4 py-10 text-center">
-                  <div className="text-3xl font-bold sm:text-4xl">
+                <div key={a.label} className="px-4 py-8 sm:py-10 text-center">
+                  <div className="text-2xl sm:text-4xl font-bold">
                     <GradientText>{a.metric}</GradientText>
                   </div>
-                  <div className="mt-2 text-sm text-zinc-500">{a.label}</div>
+                  <div className="mt-2 text-xs sm:text-sm text-zinc-500">{a.label}</div>
                 </div>
               ))}
             </div>
@@ -204,7 +211,7 @@ export default function Home() {
         )}
 
         {/* Tech Stack */}
-        <section className="relative overflow-hidden py-28">
+        <section className="relative overflow-hidden py-16 sm:py-28">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(194,164,255,0.1)_0%,transparent_50%),radial-gradient(circle_at_80%_50%,rgba(194,164,255,0.08)_0%,transparent_50%)]"
@@ -212,9 +219,11 @@ export default function Home() {
           <div className="relative">
             <Reveal>
               <BigHeading>Tech Stack</BigHeading>
-              <p className="mt-4 text-center text-zinc-500">Skillset & tools yang saya pakai sehari-hari</p>
+              <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
+                Teknologi yang saya gunakan untuk web & mobile
+              </p>
             </Reveal>
-            <div className="mt-14 space-y-5">
+            <div className="mt-8 sm:mt-14 space-y-3 sm:space-y-5">
               <SkillMarquee />
               <SkillMarquee reverse />
             </div>
@@ -223,31 +232,29 @@ export default function Home() {
 
         {/* Services */}
         {services.length > 0 && (
-          <section id="layanan" className="scroll-mt-16 border-t border-white/[0.06] py-28">
-            <div className="mx-auto max-w-6xl px-5">
+          <section id="layanan" className="scroll-mt-16 border-t border-white/[0.06] py-16 sm:py-28">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
                 <BigHeading>Layanan</BigHeading>
-                <p className="mt-4 text-center text-zinc-500">Apa yang bisa saya kerjakan untuk Anda</p>
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
+                  Solusi digital yang bisa saya bangun untuk kebutuhan Anda
+                </p>
               </Reveal>
-              <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {services.map((s, i) => {
                   const Icon = serviceIcons[i % serviceIcons.length];
                   return (
                     <Reveal key={s.name} delay={i * 100}>
-                      <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.05]">
-                        <div
-                          aria-hidden
-                          className="pointer-events-none absolute -top-16 right-0 size-40 rounded-full bg-[#a87cff]/10 blur-3xl opacity-0 transition group-hover:opacity-100"
-                        />
-                        <div className="inline-flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c2a4ff]/20 to-[#a87cff]/20 text-[#c2a4ff] ring-1 ring-inset ring-[#c2a4ff]/20">
+                      <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-7 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.05]">
+                        <div className="inline-flex size-11 sm:size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c2a4ff]/20 to-[#a87cff]/20 text-[#c2a4ff] ring-1 ring-inset ring-[#c2a4ff]/20">
                           <Icon className="size-5" />
                         </div>
-                        <h3 className="mt-5 text-lg font-semibold">{s.name}</h3>
+                        <h3 className="mt-4 sm:mt-5 text-base sm:text-lg font-semibold">{s.name}</h3>
                         {s.description && (
-                          <p className="mt-2 text-sm leading-relaxed text-zinc-400">{s.description}</p>
+                          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{s.description}</p>
                         )}
                         {s.priceText && (
-                          <p className="mt-4 text-sm font-medium text-[#c2a4ff]">{s.priceText}</p>
+                          <p className="mt-4 text-xs sm:text-sm font-medium text-[#c2a4ff]">{s.priceText}</p>
                         )}
                       </div>
                     </Reveal>
@@ -260,23 +267,23 @@ export default function Home() {
 
         {/* Process */}
         {processSteps.length > 0 && (
-          <section className="border-t border-white/[0.06] py-28">
-            <div className="mx-auto max-w-6xl px-5">
+          <section className="border-t border-white/[0.06] py-16 sm:py-28">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
                 <BigHeading>Cara Kerja</BigHeading>
-                <p className="mt-4 text-center text-zinc-500">
-                  Dari ide sampai live — prosesnya transparan dari awal
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
+                  Alur pengerjaan terstruktur dari konsultasi awal hingga rilis
                 </p>
               </Reveal>
-              <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 {processSteps.map((step, i) => (
                   <Reveal key={step.title} delay={i * 100}>
-                    <div className="relative h-full rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7">
-                      <div className="text-5xl font-bold text-[#c2a4ff]/25">
+                    <div className="relative h-full rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-7">
+                      <div className="text-4xl sm:text-5xl font-bold text-[#c2a4ff]/25">
                         {String(i + 1).padStart(2, "0")}
                       </div>
-                      <h3 className="mt-4 font-semibold">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                      <h3 className="mt-3 sm:mt-4 text-base font-semibold">{step.title}</h3>
+                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">
                         {step.description}
                       </p>
                       {i < processSteps.length - 1 && (
@@ -295,13 +302,15 @@ export default function Home() {
 
         {/* Portfolio */}
         {projects.length > 0 && (
-          <section id="portfolio" className="scroll-mt-16 border-t border-white/[0.06] py-28">
-            <div className="mx-auto max-w-6xl px-5">
+          <section id="portfolio" className="scroll-mt-16 border-t border-white/[0.06] py-16 sm:py-28">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
-                <BigHeading>My Works</BigHeading>
-                <p className="mt-4 text-center text-zinc-500">Project yang pernah saya bangun</p>
+                <BigHeading>Portofolio</BigHeading>
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
+                  Project pilihan yang pernah saya kembangkan
+                </p>
               </Reveal>
-              <div className="mt-14 grid gap-5 sm:grid-cols-2">
+              <div className="mt-8 sm:mt-14 grid gap-5 sm:grid-cols-2">
                 {projects.map((p, i) => {
                   const Wrapper = p.link ? "a" : "div";
                   return (
@@ -312,7 +321,7 @@ export default function Home() {
                         rel={p.link ? "noopener noreferrer" : undefined}
                         className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] transition hover:-translate-y-1 hover:border-[#c2a4ff]/40"
                       >
-                        <div className="relative aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]">
+                        <div className="relative aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]">
                           {p.imageUrl ? (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img
@@ -321,39 +330,56 @@ export default function Home() {
                               className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                             />
                           ) : (
-                            <>
-                              <div
-                                aria-hidden
-                                className="absolute inset-0 bg-[linear-gradient(to_right,rgba(234,229,236,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(234,229,236,0.04)_1px,transparent_1px)] bg-[size:32px_32px]"
-                              />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-4xl font-bold tracking-tight text-white/15 transition group-hover:text-[#c2a4ff]/30">
-                                  {p.title}
+                            <div className="absolute inset-0 flex flex-col justify-between p-5 bg-[#120e18]/80 border-b border-white/[0.06]">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="size-2 rounded-full bg-white/20" />
+                                  <span className="size-2 rounded-full bg-white/20" />
+                                  <span className="size-2 rounded-full bg-white/20" />
+                                </div>
+                                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
+                                  <Code2 className="size-3 text-[#c2a4ff]" />
+                                  {p.stack[0]}
                                 </span>
                               </div>
-                            </>
+                              <div>
+                                <h4 className="text-xl sm:text-2xl font-bold text-white/90 group-hover:text-[#c2a4ff] transition">
+                                  {p.title}
+                                </h4>
+                                <p className="mt-1 text-xs text-zinc-400 line-clamp-1">
+                                  {p.stack.join(" · ")}
+                                </p>
+                              </div>
+                            </div>
                           )}
                         </div>
-                        <div className="flex flex-1 flex-col p-6">
+                        <div className="flex flex-1 flex-col p-5 sm:p-6">
                           <div className="flex items-start justify-between gap-2">
-                            <h3 className="font-semibold">{p.title}</h3>
+                            <h3 className="font-semibold text-base sm:text-lg">{p.title}</h3>
                             {p.link && (
                               <ArrowUpRight className="size-4 shrink-0 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
                             )}
                           </div>
                           {p.description && (
-                            <p className="mt-2 text-sm leading-relaxed text-zinc-400">{p.description}</p>
+                            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{p.description}</p>
                           )}
                           {p.stack.length > 0 && (
-                            <div className="mt-4 flex flex-wrap gap-2">
+                            <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
                               {p.stack.map((tag) => (
                                 <span
                                   key={tag}
-                                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-zinc-300"
+                                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] sm:text-xs text-zinc-300"
                                 >
                                   {tag}
                                 </span>
                               ))}
+                            </div>
+                          )}
+                          {p.link && (
+                            <div className="mt-4 pt-3 border-t border-white/[0.04] sm:hidden">
+                              <span className="inline-flex items-center gap-1 text-xs font-medium text-[#c2a4ff]">
+                                Lihat Project <ArrowUpRight className="size-3.5" />
+                              </span>
                             </div>
                           )}
                         </div>
@@ -364,13 +390,13 @@ export default function Home() {
               </div>
               {site.github && (
                 <Reveal>
-                  <div className="mt-12 text-center">
-                    <p className="text-zinc-500">Mau lihat lebih banyak?</p>
+                  <div className="mt-10 sm:mt-12 text-center">
+                    <p className="text-xs sm:text-sm text-zinc-500">Mau lihat source code dan project lainnya?</p>
                     <a
                       href={site.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 font-medium text-[#c2a4ff] transition hover:text-white"
+                      className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-xs sm:text-sm font-medium text-[#c2a4ff] transition hover:border-[#c2a4ff]/50 hover:text-white"
                     >
                       <GithubIcon className="size-4" /> Kunjungi GitHub saya
                       <ArrowUpRight className="size-4" />
@@ -382,25 +408,25 @@ export default function Home() {
           </section>
         )}
 
-        {/* Testimonials */}
+        {/* Testimonials (Hanya muncul jika ada review nyata) */}
         {testimonials.length > 0 && (
-          <section className="border-t border-white/[0.06] py-28">
-            <div className="mx-auto max-w-6xl px-5">
+          <section className="border-t border-white/[0.06] py-16 sm:py-28">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
                 <BigHeading>Testimoni</BigHeading>
-                <p className="mt-4 text-center text-zinc-500">Apa kata klien</p>
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">Apa kata klien</p>
               </Reveal>
-              <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {testimonials.map((t) => (
                   <figure
                     key={t.author}
-                    className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7"
+                    className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-7"
                   >
                     <Quote className="size-5 text-[#c2a4ff]" />
-                    <blockquote className="mt-4 text-sm leading-relaxed text-zinc-300">
+                    <blockquote className="mt-4 text-xs sm:text-sm leading-relaxed text-zinc-300">
                       {t.quote}
                     </blockquote>
-                    <figcaption className="mt-5 text-sm font-medium">
+                    <figcaption className="mt-5 text-xs sm:text-sm font-medium">
                       {t.author}
                       {t.role && <span className="font-normal text-zinc-500"> · {t.role}</span>}
                     </figcaption>
@@ -412,56 +438,59 @@ export default function Home() {
         )}
 
         {/* Contact */}
-        <section id="kontak" className="relative scroll-mt-16 overflow-hidden border-t border-white/[0.06] py-28">
+        <section id="kontak" className="relative scroll-mt-16 overflow-hidden border-t border-white/[0.06] py-16 sm:py-28">
           <div
             aria-hidden
-            className="pointer-events-none absolute bottom-0 left-1/2 h-[320px] w-[640px] -translate-x-1/2 rounded-full bg-[#a87cff]/15 blur-[120px]"
+            className="pointer-events-none absolute bottom-0 left-1/2 h-[260px] sm:h-[320px] w-[90vw] sm:w-[640px] -translate-x-1/2 rounded-full bg-[#a87cff]/15 blur-[100px] sm:blur-[120px]"
           />
-          <div className="relative mx-auto max-w-6xl px-5">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
               <div className="mx-auto max-w-xl text-center">
                 <BigHeading>Kontak</BigHeading>
-                <p className="mt-5 text-lg text-zinc-300">
-                  Punya project? <GradientText>Ngobrol dulu aja.</GradientText>
+                <p className="mt-3 sm:mt-5 text-base sm:text-lg text-zinc-300">
+                  Punya ide project? <GradientText>Mari diskusikan bersama.</GradientText>
                 </p>
-                <p className="mt-2 text-zinc-500">
-                  Ceritakan kebutuhan Anda — saya balas secepatnya, konsultasi awal gratis.
+                <p className="mt-2 text-xs sm:text-sm text-zinc-500">
+                  Ceritakan kebutuhan Anda, saya siap bantu mewujudkan aplikasi yang tepat guna.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={150}>
-              <div className="mt-12">
+              <div className="mt-8 sm:mt-12">
                 <LeadForm />
               </div>
             </Reveal>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-zinc-400">
-              <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2 transition hover:text-white">
-                <Mail className="size-4" /> {site.email}
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-zinc-400">
+              <a
+                href={`mailto:${site.email}`}
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 transition hover:border-[#c2a4ff]/50 hover:text-white"
+              >
+                <Mail className="size-4 text-[#c2a4ff]" /> {site.email}
               </a>
               <a
                 href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 transition hover:text-white"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 transition hover:border-[#c2a4ff]/50 hover:text-white"
               >
-                <MessageCircle className="size-4" /> WhatsApp
+                <MessageCircle className="size-4 text-[#c2a4ff]" /> WhatsApp Langsung
               </a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-white/[0.06] py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-zinc-500 sm:flex-row">
+      <footer className="border-t border-white/[0.06] py-8 sm:py-10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:px-6 text-xs sm:text-sm text-zinc-500 sm:flex-row text-center sm:text-left">
           <span>
-            Designed & developed by {site.name} © {new Date().getFullYear()}
+            Didesain & dikembangkan oleh {site.name} © {new Date().getFullYear()}
           </span>
           {site.github && (
             <a
               href={site.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition hover:text-white"
+              className="inline-flex min-h-[44px] items-center gap-2 transition hover:text-white"
             >
               <GithubIcon className="size-4" /> {site.github.replace("https://github.com/", "@")}
             </a>

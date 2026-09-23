@@ -12,7 +12,9 @@ export type Project = {
   description: string;
   stack: string[];
   link?: string;
+  githubUrl?: string;
   imageUrl?: string;
+  isLive?: boolean;
 };
 
 export type Achievement = {
@@ -117,6 +119,17 @@ export const projects: Project[] = [
     stack: ["Next.js", "Supabase", "Tailwind CSS", "TypeScript"],
     link: "https://trading-jurnal-five.vercel.app",
     imageUrl: "/projects/trading-jurnal.webp",
+    isLive: true,
+  },
+  {
+    title: "GAMES-HUB",
+    description:
+      "Portal kumpulan game web modern yang dapat langsung dimainkan di browser, dibangun menggunakan Next.js 16 dan Tailwind CSS v4.",
+    stack: ["Next.js 16", "Tailwind v4", "TypeScript"],
+    link: "https://games-hub-beryl-nine.vercel.app",
+    githubUrl: "https://github.com/ibnu-anjang/GAMES-HUB",
+    imageUrl: "/projects/games-hub.webp",
+    isLive: true,
   },
   {
     title: "SekolahKu (Data Siswa)",
@@ -125,14 +138,7 @@ export const projects: Project[] = [
     stack: ["Flutter", "Firebase", "Riverpod", "Dart"],
     link: "https://github.com/ibnu-anjang/Data-Management-Siswa",
     imageUrl: "",
-  },
-  {
-    title: "GAMES-HUB",
-    description:
-      "Portal kumpulan game web modern yang dapat langsung dimainkan di browser, dibangun menggunakan Next.js 16 dan Tailwind CSS v4.",
-    stack: ["Next.js 16", "Tailwind v4", "TypeScript"],
-    link: "https://github.com/ibnu-anjang/GAMES-HUB",
-    imageUrl: "/projects/games-hub.webp",
+    isLive: false,
   },
   {
     title: "Simple Cash Tracker",
@@ -141,6 +147,7 @@ export const projects: Project[] = [
     stack: ["PHP", "MySQL", "Docker", "XAMPP"],
     link: "https://github.com/ibnu-anjang/Simple-Cash-Tracker",
     imageUrl: "",
+    isLive: false,
   },
 ];
 

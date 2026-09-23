@@ -102,7 +102,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative overflow-hidden pt-20 pb-12 sm:pt-28 sm:pb-20">
+        <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-16 pb-8 sm:py-24">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_85%_35%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
@@ -263,7 +263,7 @@ export default function Home() {
                         </a>
 
                         <a
-                          href="https://github.com/ibnu-anjang/GAMES-HUB"
+                          href="https://games-hub-beryl-nine.vercel.app"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-2.5 sm:p-3 transition hover:border-[#c2a4ff]/30 hover:bg-white/[0.05]"
@@ -276,7 +276,7 @@ export default function Home() {
                               <h5 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition">
                                 GAMES-HUB
                               </h5>
-                              <p className="text-[10px] text-zinc-500">Next.js 16 · Tailwind v4</p>
+                              <p className="text-[10px] text-zinc-500">Next.js 16 · Tailwind v4 · Live</p>
                             </div>
                           </div>
                           <ArrowUpRight className="size-3 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
@@ -297,6 +297,14 @@ export default function Home() {
                   </div>
                 </Reveal>
               </div>
+            </div>
+          </div>
+
+          {/* Subtle scroll cue */}
+          <div className="absolute bottom-3 sm:bottom-6 inset-x-0 flex justify-center pointer-events-none">
+            <div className="flex items-center gap-1.5 text-[11px] text-zinc-500 tracking-wide">
+              <span>Scroll untuk jelajahi</span>
+              <span className="inline-block animate-bounce text-zinc-400">↓</span>
             </div>
           </div>
         </section>
@@ -418,17 +426,18 @@ export default function Home() {
                 </p>
               </Reveal>
               <div className="mt-8 sm:mt-14 grid gap-5 sm:grid-cols-2">
-                {projects.map((p, i) => {
-                  const Wrapper = p.link ? "a" : "div";
-                  return (
-                    <Reveal key={p.title} delay={i * 100}>
-                      <Wrapper
-                        href={p.link || undefined}
-                        target={p.link ? "_blank" : undefined}
-                        rel={p.link ? "noopener noreferrer" : undefined}
-                        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] transition hover:-translate-y-1 hover:border-[#c2a4ff]/40"
-                      >
-                        <div className="relative aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]">
+                {projects.map((p, i) => (
+                  <Reveal key={p.title} delay={i * 100}>
+                    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] transition hover:-translate-y-1 hover:border-[#c2a4ff]/40">
+                      {/* Image / Header Preview */}
+                      {p.link ? (
+                        <a
+                          href={p.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative block aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]"
+                          aria-label={`Buka ${p.title}`}
+                        >
                           {p.imageUrl ? (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img
@@ -459,41 +468,139 @@ export default function Home() {
                               </div>
                             </div>
                           )}
+                        </a>
+                      ) : (
+                        <div className="relative aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]">
+                          {p.imageUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={p.imageUrl}
+                              alt={p.title}
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex flex-col justify-between p-5 bg-[#120e18]/80 border-b border-white/[0.06]">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="size-2 rounded-full bg-white/20" />
+                                  <span className="size-2 rounded-full bg-white/20" />
+                                  <span className="size-2 rounded-full bg-white/20" />
+                                </div>
+                                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
+                                  <Code2 className="size-3 text-[#c2a4ff]" />
+                                  {p.stack[0]}
+                                </span>
+                              </div>
+                              <div>
+                                <h4 className="text-xl sm:text-2xl font-bold text-white/90">
+                                  {p.title}
+                                </h4>
+                                <p className="mt-1 text-xs text-zinc-400 line-clamp-1">
+                                  {p.stack.join(" · ")}
+                                </p>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        <div className="flex flex-1 flex-col p-5 sm:p-6">
-                          <div className="flex items-start justify-between gap-2">
-                            <h3 className="font-semibold text-base sm:text-lg">{p.title}</h3>
-                            {p.link && (
-                              <ArrowUpRight className="size-4 shrink-0 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
+                      )}
+
+                      <div className="flex flex-1 flex-col p-5 sm:p-6">
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
+                            {p.link ? (
+                              <a
+                                href={p.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-base sm:text-lg text-white hover:text-[#c2a4ff] transition"
+                              >
+                                {p.title}
+                              </a>
+                            ) : (
+                              <h3 className="font-semibold text-base sm:text-lg text-white">{p.title}</h3>
+                            )}
+                            {p.isLive ? (
+                              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-medium text-emerald-400">
+                                <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                Live Demo
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
+                                <GithubIcon className="size-3" />
+                                Source Code
+                              </span>
                             )}
                           </div>
-                          {p.description && (
-                            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{p.description}</p>
-                          )}
-                          {p.stack.length > 0 && (
-                            <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
-                              {p.stack.map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] sm:text-xs text-zinc-300"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          )}
                           {p.link && (
-                            <div className="mt-4 pt-3 border-t border-white/[0.04] sm:hidden">
-                              <span className="inline-flex items-center gap-1 text-xs font-medium text-[#c2a4ff]">
-                                Lihat Project <ArrowUpRight className="size-3.5" />
-                              </span>
-                            </div>
+                            <a
+                              href={p.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Buka ${p.title}`}
+                              className="text-zinc-500 hover:text-[#c2a4ff] transition p-1"
+                            >
+                              <ArrowUpRight className="size-4 shrink-0" />
+                            </a>
                           )}
                         </div>
-                      </Wrapper>
-                    </Reveal>
-                  );
-                })}
+                        {p.description && (
+                          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{p.description}</p>
+                        )}
+                        {p.stack.length > 0 && (
+                          <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
+                            {p.stack.map((tag) => (
+                              <span
+                                key={tag}
+                                className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] sm:text-xs text-zinc-300"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Bottom Actions */}
+                        {p.link && (
+                          <div className="mt-auto pt-5 border-t border-white/[0.06] flex items-center justify-between text-xs font-medium">
+                            {p.isLive ? (
+                              <>
+                                <a
+                                  href={p.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-medium transition"
+                                >
+                                  Buka Live Website <ArrowUpRight className="size-3.5" />
+                                </a>
+                                {p.githubUrl && (
+                                  <a
+                                    href={p.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-zinc-400 hover:text-white transition"
+                                  >
+                                    <GithubIcon className="size-3.5" />
+                                    <span>Repository</span>
+                                  </a>
+                                )}
+                              </>
+                            ) : (
+                              <a
+                                href={p.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 text-[#c2a4ff] hover:text-white transition font-medium"
+                              >
+                                <GithubIcon className="size-3.5" />
+                                Lihat di GitHub <ArrowUpRight className="size-3.5" />
+                              </a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
               </div>
               {site.github && (
                 <Reveal>

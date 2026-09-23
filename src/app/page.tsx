@@ -105,92 +105,199 @@ export default function Home() {
         <section className="relative flex min-h-[calc(100dvh-4rem)] sm:min-h-svh items-center overflow-hidden">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_80%_40%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_85%_35%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
           />
-          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-14 pt-24 sm:pb-20 sm:pt-32">
-            <Reveal>
-              <div className="flex items-center gap-3 sm:gap-4">
-                {site.avatarUrl && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={site.avatarUrl}
-                    alt={site.name}
-                    className="size-14 sm:size-20 rounded-full object-cover ring-2 ring-[#a87cff]/60"
-                  />
-                )}
-                <div>
-                  <p className="text-base sm:text-xl text-zinc-300">👋 Halo! Saya</p>
-                  <p className="text-xs sm:hidden font-medium text-[#c2a4ff] mt-0.5">{site.role}</p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="mt-3 sm:mt-2 text-5xl font-bold leading-[1.0] tracking-tight sm:text-8xl lg:text-9xl">
-                {site.name.split(" ")[0]}
-                <br />
-                <GradientText>{site.name.split(" ").slice(1).join(" ")}</GradientText>
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="hidden sm:block mt-8 text-xl font-medium text-zinc-200 sm:text-2xl">{site.role}</p>
-              <p className="mt-4 sm:mt-3 max-w-xl text-pretty text-sm sm:text-base leading-relaxed text-zinc-400">
-                {site.about}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <a
-                  href="#kontak"
-                  className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-8 py-3.5 font-medium text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
-                >
-                  Minta Penawaran
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                </a>
-                <a
-                  href="#portfolio"
-                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3.5 font-medium text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
-                >
-                  Lihat Portofolio
-                </a>
-              </div>
-            </Reveal>
-            <Reveal delay={400}>
-              <div className="mt-8 sm:mt-12 flex flex-wrap items-center gap-3 sm:gap-4 text-zinc-500">
-                <div className="flex items-center gap-2">
-                  {site.github && (
+          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 py-12 sm:py-20 lg:py-24">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              {/* Left Column: Hook & Value Proposition */}
+              <div className="lg:col-span-7">
+                <Reveal>
+                  <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] p-1.5 pr-4 text-xs text-zinc-300 backdrop-blur">
+                    {site.avatarUrl && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={site.avatarUrl}
+                        alt={site.name}
+                        className="size-7 rounded-full object-cover ring-1 ring-[#c2a4ff]/50"
+                      />
+                    )}
+                    <span className="font-semibold text-white">{site.name}</span>
+                    <span className="text-zinc-600">·</span>
+                    <span className="inline-flex items-center gap-1.5 text-emerald-400">
+                      <span className="size-1.5 rounded-full bg-emerald-400" />
+                      Tersedia untuk project baru
+                    </span>
+                  </div>
+                </Reveal>
+                <Reveal delay={100}>
+                  <h1 className="mt-5 text-4xl sm:text-6xl lg:text-[4rem] font-bold leading-[1.08] tracking-tight text-white">
+                    Bikin Website & Aplikasi Mobile yang{" "}
+                    <GradientText>Rapi, Cepat & Siap Pakai.</GradientText>
+                  </h1>
+                </Reveal>
+                <Reveal delay={200}>
+                  <p className="mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-zinc-400">
+                    {site.about}
+                  </p>
+                </Reveal>
+                <Reveal delay={300}>
+                  <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                     <a
-                      href={site.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
+                      href="#kontak"
+                      className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-8 py-3.5 font-medium text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
+                    >
+                      Minta Penawaran
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                    <a
+                      href="#portfolio"
+                      className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3.5 font-medium text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
+                    >
+                      Lihat Portofolio
+                    </a>
+                  </div>
+                </Reveal>
+                <Reveal delay={400}>
+                  <div className="mt-8 flex items-center gap-3 text-zinc-500">
+                    {site.github && (
+                      <a
+                        href={site.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                      >
+                        <GithubIcon className="size-5" />
+                      </a>
+                    )}
+                    <a
+                      href={`mailto:${site.email}`}
+                      aria-label="Email"
                       className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                     >
-                      <GithubIcon className="size-5" />
+                      <Mail className="size-5" />
                     </a>
-                  )}
-                  <a
-                    href={`mailto:${site.email}`}
-                    aria-label="Email"
-                    className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
-                  >
-                    <Mail className="size-5" />
-                  </a>
-                  <a
-                    href={`https://wa.me/${site.whatsapp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="WhatsApp"
-                    className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
-                  >
-                    <MessageCircle className="size-5" />
-                  </a>
-                </div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1.5 text-xs text-emerald-400">
-                  <span className="size-1.5 rounded-full bg-emerald-400" />
-                  Terbuka untuk project baru
-                </div>
+                    <a
+                      href={`https://wa.me/${site.whatsapp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="WhatsApp"
+                      className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                    >
+                      <MessageCircle className="size-5" />
+                    </a>
+                  </div>
+                </Reveal>
               </div>
-            </Reveal>
+
+              {/* Right Column: Visual Hook Showcase Card */}
+              <div className="lg:col-span-5">
+                <Reveal delay={200}>
+                  <div className="relative">
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#a87cff]/20 to-[#c2a4ff]/10 blur-xl opacity-75"
+                    />
+                    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#120e18]/90 p-5 shadow-2xl backdrop-blur-xl">
+                      {/* Card Header */}
+                      <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+                        <div className="flex items-center gap-2">
+                          <span className="size-2.5 rounded-full bg-rose-500/80" />
+                          <span className="size-2.5 rounded-full bg-amber-500/80" />
+                          <span className="size-2.5 rounded-full bg-emerald-500/80" />
+                          <span className="ml-1.5 text-xs font-medium text-zinc-400">Featured Showcase</span>
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-medium text-emerald-400">
+                          <span className="size-1.5 rounded-full bg-emerald-400" />
+                          Live Demo
+                        </span>
+                      </div>
+
+                      {/* Main Showcase Image Preview (Trading Jurnal) */}
+                      <div className="mt-4 overflow-hidden rounded-xl border border-white/[0.08] bg-black/40">
+                        <div className="group relative aspect-[16/10] overflow-hidden">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src="/projects/trading-jurnal.webp"
+                            alt="Trading Jurnal"
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                            <div>
+                              <p className="text-[11px] font-medium text-[#c2a4ff]">Web Analytics App</p>
+                              <h4 className="text-sm font-bold text-white">Trading Jurnal</h4>
+                            </div>
+                            <a
+                              href="https://trading-jurnal-five.vercel.app"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-lg bg-white/15 px-2.5 py-1 text-xs font-medium text-white backdrop-blur hover:bg-[#a87cff] transition"
+                            >
+                              Buka <ArrowUpRight className="size-3" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Secondary Showcase Mini Cards */}
+                      <div className="mt-3.5 space-y-2">
+                        <a
+                          href="https://github.com/ibnu-anjang/Data-Management-Siswa"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 transition hover:border-[#c2a4ff]/30 hover:bg-white/[0.05]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex size-9 items-center justify-center rounded-lg bg-[#a87cff]/10 text-[#c2a4ff] ring-1 ring-white/10">
+                              <Smartphone className="size-4" />
+                            </div>
+                            <div>
+                              <h5 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition">
+                                SekolahKu (Data Siswa)
+                              </h5>
+                              <p className="text-[11px] text-zinc-500">Flutter Mobile · Firebase Firestore</p>
+                            </div>
+                          </div>
+                          <ArrowUpRight className="size-3.5 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
+                        </a>
+
+                        <a
+                          href="https://github.com/ibnu-anjang/GAMES-HUB"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 transition hover:border-[#c2a4ff]/30 hover:bg-white/[0.05]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex size-9 items-center justify-center rounded-lg bg-[#a87cff]/10 text-[#c2a4ff] ring-1 ring-white/10">
+                              <Globe className="size-4" />
+                            </div>
+                            <div>
+                              <h5 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition">
+                                GAMES-HUB
+                              </h5>
+                              <p className="text-[11px] text-zinc-500">Next.js 16 · Tailwind CSS v4</p>
+                            </div>
+                          </div>
+                          <ArrowUpRight className="size-3.5 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
+                        </a>
+                      </div>
+
+                      {/* Card Footer */}
+                      <div className="mt-3.5 pt-3 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-zinc-400">
+                        <span>Stack: Next.js, Flutter, Supabase</span>
+                        <a
+                          href="#portfolio"
+                          className="text-[#c2a4ff] hover:underline"
+                        >
+                          Semua Karya →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
           </div>
         </section>
 

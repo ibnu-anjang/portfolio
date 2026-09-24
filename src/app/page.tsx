@@ -310,7 +310,7 @@ export default function Home() {
                               <h5 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition">
                                 GAMES-HUB
                               </h5>
-                              <p className="text-[10px] text-zinc-500">Next.js 16 · Tailwind v4 · Live</p>
+                              <p className="text-[10px] text-zinc-500">Next.js · Tailwind CSS · Live</p>
                             </div>
                           </div>
                           <ArrowUpRight className="size-3 text-zinc-500 transition group-hover:text-[#c2a4ff]" />

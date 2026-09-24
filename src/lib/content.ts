@@ -146,7 +146,7 @@ export const projects: Project[] = [
     category: "Interactive Web Portal",
     description:
       "Portal kumpulan game web modern yang dapat langsung dimainkan instan di browser mobile maupun desktop tanpa instalasi dan bebas iklan mengganggu.",
-    stack: ["Next.js 16", "Tailwind v4", "TypeScript"],
+    stack: ["Next.js", "Tailwind CSS", "TypeScript"],
     link: "https://games-hub-beryl-nine.vercel.app",
     githubUrl: "https://github.com/ibnu-anjang/GAMES-HUB",
     imageUrl: "/projects/games-hub.webp",
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     category: "Self-Hosted Backend Tool",
     description:
       "Aplikasi pencatatan arus kas operasional masuk-keluar yang mudah di-deploy mandiri (self-hosted) dengan Docker untuk UMKM atau organisasi kecil.",
-    stack: ["PHP", "MySQL", "Docker", "XAMPP"],
+    stack: ["PHP", "MySQL", "Docker"],
     link: "https://github.com/ibnu-anjang/Simple-Cash-Tracker",
     imageUrl: "",
     isLive: false,

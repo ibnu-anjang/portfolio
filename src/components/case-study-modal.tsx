@@ -169,37 +169,29 @@ export function CaseStudyModal({
         </div>
 
         {/* Footer Actions (Sticky bottom bar) */}
-        <div className="border-t border-white/[0.08] p-3 sm:p-4 bg-[#120e18]/95 backdrop-blur-md flex items-center justify-between gap-2.5">
-          <button
-            onClick={onClose}
-            className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-white/10 px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white transition"
-          >
-            Tutup
-          </button>
-          <div className="flex items-center gap-2">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-white/15 px-3.5 py-2 text-xs font-medium text-zinc-300 transition hover:bg-white/10 hover:text-white"
-              >
-                <GithubIcon className="size-3.5" />
-                <span className="hidden sm:inline">GitHub</span>
-              </a>
-            )}
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-4 py-2 text-xs font-semibold text-white shadow-md transition hover:brightness-110 active:scale-[0.98]"
-              >
-                <span>{project.isLive ? "Buka Live Web" : "Buka Project"}</span>
-                <ArrowUpRight className="size-3.5" />
-              </a>
-            )}
-          </div>
+        <div className="border-t border-white/[0.08] p-3 sm:p-4 bg-[#120e18]/95 backdrop-blur-md flex items-center justify-end gap-2.5">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-xs font-medium text-zinc-300 transition hover:bg-white/10 hover:text-white"
+            >
+              <GithubIcon className="size-4" />
+              <span className="hidden sm:inline">Repository</span>
+            </a>
+          )}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-initial inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-5 py-2 text-xs font-semibold text-white shadow-md transition hover:brightness-110 active:scale-[0.98]"
+            >
+              <span>{project.isLive ? "Buka Live Website" : "Buka Project"}</span>
+              <ArrowUpRight className="size-3.5" />
+            </a>
+          )}
         </div>
       </div>
     </div>

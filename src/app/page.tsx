@@ -7,7 +7,6 @@ import {
   Quote,
   Server,
   Smartphone,
-  Code2,
 } from "lucide-react";
 import {
   achievements,
@@ -21,11 +20,20 @@ import {
 import { CursorGlow } from "@/components/cursor-glow";
 import { LeadForm } from "@/components/lead-form";
 import { Reveal } from "@/components/reveal";
+import { PortfolioSection } from "@/components/portfolio-section";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
       <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z" />
+    </svg>
+  );
+}
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
     </svg>
   );
 }
@@ -123,9 +131,11 @@ export default function Home() {
                     )}
                     <span className="font-semibold text-white">{site.name}</span>
                     <span className="text-zinc-600">·</span>
+                    <span className="text-zinc-400 font-medium">Junior Fullstack & Mobile</span>
+                    <span className="text-zinc-600">·</span>
                     <span className="inline-flex items-center gap-1.5 text-emerald-400">
                       <span className="size-1.5 rounded-full bg-emerald-400" />
-                      Tersedia untuk project baru
+                      Tersedia untuk project
                     </span>
                   </div>
                 </Reveal>
@@ -155,6 +165,16 @@ export default function Home() {
                     >
                       Lihat Portofolio
                     </a>
+                    {site.cvUrl && (
+                      <a
+                        href={site.cvUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
+                      >
+                        Download CV
+                      </a>
+                    )}
                   </div>
                 </Reveal>
                 <Reveal delay={320}>
@@ -168,6 +188,17 @@ export default function Home() {
                         className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                       >
                         <GithubIcon className="size-5" />
+                      </a>
+                    )}
+                    {site.linkedin && (
+                      <a
+                        href={site.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                      >
+                        <LinkedinIcon className="size-5" />
                       </a>
                     )}
                     <a
@@ -422,186 +453,10 @@ export default function Home() {
               <Reveal>
                 <BigHeading>Portofolio</BigHeading>
                 <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
-                  Project pilihan yang pernah saya kembangkan
+                  Project nyata yang pernah saya bangun beserta studi kasus arsitekturnya
                 </p>
               </Reveal>
-              <div className="mt-8 sm:mt-14 grid gap-5 sm:grid-cols-2">
-                {projects.map((p, i) => (
-                  <Reveal key={p.title} delay={i * 100}>
-                    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] transition hover:-translate-y-1 hover:border-[#c2a4ff]/40">
-                      {/* Image / Header Preview */}
-                      {p.link ? (
-                        <a
-                          href={p.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="relative block aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]"
-                          aria-label={`Buka ${p.title}`}
-                        >
-                          {p.imageUrl ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={p.imageUrl}
-                              alt={p.title}
-                              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex flex-col justify-between p-5 bg-[#120e18]/80 border-b border-white/[0.06]">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-1.5">
-                                  <span className="size-2 rounded-full bg-white/20" />
-                                  <span className="size-2 rounded-full bg-white/20" />
-                                  <span className="size-2 rounded-full bg-white/20" />
-                                </div>
-                                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
-                                  <Code2 className="size-3 text-[#c2a4ff]" />
-                                  {p.stack[0]}
-                                </span>
-                              </div>
-                              <div>
-                                <h4 className="text-xl sm:text-2xl font-bold text-white/90 group-hover:text-[#c2a4ff] transition">
-                                  {p.title}
-                                </h4>
-                                <p className="mt-1 text-xs text-zinc-400 line-clamp-1">
-                                  {p.stack.join(" · ")}
-                                </p>
-                              </div>
-                            </div>
-                          )}
-                        </a>
-                      ) : (
-                        <div className="relative aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-gradient-to-br from-[#1a1126] via-[#0d0a12] to-[#150f22]">
-                          {p.imageUrl ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={p.imageUrl}
-                              alt={p.title}
-                              className="h-full w-full object-cover"
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex flex-col justify-between p-5 bg-[#120e18]/80 border-b border-white/[0.06]">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-1.5">
-                                  <span className="size-2 rounded-full bg-white/20" />
-                                  <span className="size-2 rounded-full bg-white/20" />
-                                  <span className="size-2 rounded-full bg-white/20" />
-                                </div>
-                                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
-                                  <Code2 className="size-3 text-[#c2a4ff]" />
-                                  {p.stack[0]}
-                                </span>
-                              </div>
-                              <div>
-                                <h4 className="text-xl sm:text-2xl font-bold text-white/90">
-                                  {p.title}
-                                </h4>
-                                <p className="mt-1 text-xs text-zinc-400 line-clamp-1">
-                                  {p.stack.join(" · ")}
-                                </p>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <div className="flex flex-1 flex-col p-5 sm:p-6">
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="flex flex-wrap items-center gap-2">
-                            {p.link ? (
-                              <a
-                                href={p.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-semibold text-base sm:text-lg text-white hover:text-[#c2a4ff] transition"
-                              >
-                                {p.title}
-                              </a>
-                            ) : (
-                              <h3 className="font-semibold text-base sm:text-lg text-white">{p.title}</h3>
-                            )}
-                            {p.isLive ? (
-                              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-medium text-emerald-400">
-                                <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                                Live Demo
-                              </span>
-                            ) : (
-                              <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
-                                <GithubIcon className="size-3" />
-                                Source Code
-                              </span>
-                            )}
-                          </div>
-                          {p.link && (
-                            <a
-                              href={p.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`Buka ${p.title}`}
-                              className="text-zinc-500 hover:text-[#c2a4ff] transition p-1"
-                            >
-                              <ArrowUpRight className="size-4 shrink-0" />
-                            </a>
-                          )}
-                        </div>
-                        {p.description && (
-                          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{p.description}</p>
-                        )}
-                        {p.stack.length > 0 && (
-                          <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
-                            {p.stack.map((tag) => (
-                              <span
-                                key={tag}
-                                className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] sm:text-xs text-zinc-300"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Bottom Actions */}
-                        {p.link && (
-                          <div className="mt-auto pt-5 border-t border-white/[0.06] flex items-center justify-between text-xs font-medium">
-                            {p.isLive ? (
-                              <>
-                                <a
-                                  href={p.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-medium transition"
-                                >
-                                  Buka Live Website <ArrowUpRight className="size-3.5" />
-                                </a>
-                                {p.githubUrl && (
-                                  <a
-                                    href={p.githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1 text-zinc-400 hover:text-white transition"
-                                  >
-                                    <GithubIcon className="size-3.5" />
-                                    <span>Repository</span>
-                                  </a>
-                                )}
-                              </>
-                            ) : (
-                              <a
-                                href={p.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-[#c2a4ff] hover:text-white transition font-medium"
-                              >
-                                <GithubIcon className="size-3.5" />
-                                Lihat di GitHub <ArrowUpRight className="size-3.5" />
-                              </a>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </article>
-                  </Reveal>
-                ))}
-              </div>
+              <PortfolioSection projects={projects} />
               {site.github && (
                 <Reveal>
                   <div className="mt-10 sm:mt-12 text-center">

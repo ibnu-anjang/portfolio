@@ -110,37 +110,40 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-16 pb-8 sm:py-24">
+        <section className="relative flex min-h-[100dvh] flex-col justify-between overflow-hidden pt-20 pb-6 sm:py-24">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_85%_35%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
           />
-          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 my-auto">
             <div className="grid gap-8 lg:grid-cols-12 lg:gap-10 lg:items-center">
               {/* Left Column: Hook & Value Proposition */}
               <div className="lg:col-span-7">
                 <Reveal>
-                  <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] p-1.5 pr-3.5 text-xs text-zinc-300 backdrop-blur">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] p-1.5 pr-3 text-xs text-zinc-300 backdrop-blur">
                     {site.avatarUrl && (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={site.avatarUrl}
                         alt={site.name}
-                        className="size-7 rounded-full object-cover ring-1 ring-[#c2a4ff]/50"
+                        className="size-6 sm:size-7 rounded-full object-cover ring-1 ring-[#c2a4ff]/50"
                       />
                     )}
-                    <span className="font-semibold text-white">{site.name}</span>
+                    <span className="font-semibold text-white whitespace-nowrap">{site.name}</span>
                     <span className="text-zinc-600">·</span>
-                    <span className="text-zinc-400 font-medium">Junior Fullstack & Mobile</span>
-                    <span className="text-zinc-600">·</span>
-                    <span className="inline-flex items-center gap-1.5 text-emerald-400">
-                      <span className="size-1.5 rounded-full bg-emerald-400" />
+                    <span className="inline-flex items-center gap-1.5 text-emerald-400 whitespace-nowrap text-[11px] sm:text-xs">
+                      <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       Tersedia untuk project
                     </span>
                   </div>
                 </Reveal>
-                <Reveal delay={80}>
-                  <h1 className="mt-4 sm:mt-5 text-3xl sm:text-5xl lg:text-[3.8rem] font-bold leading-[1.18] sm:leading-[1.08] tracking-tight text-white">
+                <Reveal delay={60}>
+                  <p className="mt-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#c2a4ff]">
+                    Junior Fullstack Web & Mobile Developer
+                  </p>
+                </Reveal>
+                <Reveal delay={100}>
+                  <h1 className="mt-2 text-2xl xs:text-3xl sm:text-5xl lg:text-[3.8rem] font-bold leading-[1.18] sm:leading-[1.08] tracking-tight text-white">
                     Bikin Website & Aplikasi Mobile yang{" "}
                     <GradientText>Rapi, Cepat & Siap Pakai.</GradientText>
                   </h1>
@@ -150,18 +153,18 @@ export default function Home() {
                     {site.about}
                   </p>
                 </Reveal>
-                <Reveal delay={240}>
-                  <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Reveal delay={220}>
+                  <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
                     <a
                       href="#kontak"
-                      className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
+                      className="group inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 rounded-xl sm:rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
                     >
                       Minta Penawaran
                       <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                     </a>
                     <a
                       href="#portfolio"
-                      className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
+                      className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 rounded-xl sm:rounded-full border border-white/15 px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
                     >
                       Lihat Portofolio
                     </a>
@@ -170,24 +173,24 @@ export default function Home() {
                         href={site.cvUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
+                        className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 rounded-xl sm:rounded-full border border-white/15 px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
                       >
                         Download CV
                       </a>
                     )}
                   </div>
                 </Reveal>
-                <Reveal delay={320}>
-                  <div className="mt-6 sm:mt-8 flex items-center gap-3 text-zinc-500">
+                <Reveal delay={280}>
+                  <div className="mt-5 sm:mt-8 flex items-center gap-2.5 sm:gap-3 text-zinc-500">
                     {site.github && (
                       <a
                         href={site.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
-                        className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                        className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                       >
-                        <GithubIcon className="size-5" />
+                        <GithubIcon className="size-4 sm:size-5" />
                       </a>
                     )}
                     {site.linkedin && (
@@ -196,26 +199,26 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
-                        className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                        className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                       >
-                        <LinkedinIcon className="size-5" />
+                        <LinkedinIcon className="size-4 sm:size-5" />
                       </a>
                     )}
                     <a
                       href={`mailto:${site.email}`}
                       aria-label="Email"
-                      className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                      className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                     >
-                      <Mail className="size-5" />
+                      <Mail className="size-4 sm:size-5" />
                     </a>
                     <a
                       href={`https://wa.me/${site.whatsapp}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="WhatsApp"
-                      className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                      className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                     >
-                      <MessageCircle className="size-5" />
+                      <MessageCircle className="size-4 sm:size-5" />
                     </a>
                   </div>
                 </Reveal>
@@ -331,11 +334,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Subtle scroll cue */}
-          <div className="absolute bottom-3 sm:bottom-6 inset-x-0 flex justify-center pointer-events-none">
-            <div className="flex items-center gap-1.5 text-[11px] text-zinc-500 tracking-wide">
+          {/* Subtle scroll cue (Clean flow, anchored nicely at bottom) */}
+          <div className="relative z-10 pt-4 pb-2 flex justify-center pointer-events-none">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] sm:text-xs text-zinc-400 backdrop-blur">
               <span>Scroll untuk jelajahi</span>
-              <span className="inline-block animate-bounce text-zinc-400">↓</span>
+              <span className="inline-block animate-bounce text-[#c2a4ff]">↓</span>
             </div>
           </div>
         </section>
@@ -391,16 +394,22 @@ export default function Home() {
                   const Icon = serviceIcons[i % serviceIcons.length];
                   return (
                     <Reveal key={s.name} delay={i * 100}>
-                      <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-7 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.05]">
-                        <div className="inline-flex size-11 sm:size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c2a4ff]/20 to-[#a87cff]/20 text-[#c2a4ff] ring-1 ring-inset ring-[#c2a4ff]/20">
-                          <Icon className="size-5" />
+                      <div className="group relative h-full flex flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-7 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.05]">
+                        <div>
+                          <div className="inline-flex size-11 sm:size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c2a4ff]/20 to-[#a87cff]/20 text-[#c2a4ff] ring-1 ring-inset ring-[#c2a4ff]/20">
+                            <Icon className="size-5" />
+                          </div>
+                          <h3 className="mt-4 sm:mt-5 text-base sm:text-lg font-semibold">{s.name}</h3>
+                          {s.description && (
+                            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{s.description}</p>
+                          )}
                         </div>
-                        <h3 className="mt-4 sm:mt-5 text-base sm:text-lg font-semibold">{s.name}</h3>
-                        {s.description && (
-                          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">{s.description}</p>
-                        )}
                         {s.priceText && (
-                          <p className="mt-4 text-xs sm:text-sm font-medium text-[#c2a4ff]">{s.priceText}</p>
+                          <div className="mt-5 pt-3.5 border-t border-white/[0.06]">
+                            <span className="inline-flex items-center text-xs font-medium text-[#c2a4ff]">
+                              {s.priceText}
+                            </span>
+                          </div>
                         )}
                       </div>
                     </Reveal>

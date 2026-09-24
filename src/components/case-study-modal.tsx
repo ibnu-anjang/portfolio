@@ -54,7 +54,7 @@ export function CaseStudyModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="case-study-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 flex flex-col justify-end sm:justify-center sm:items-center p-0 sm:p-4 md:p-6 overflow-hidden"
     >
       {/* Backdrop */}
       <div
@@ -62,99 +62,104 @@ export function CaseStudyModal({
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-in fade-in duration-200"
       />
 
-      {/* Modal Dialog */}
-      <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-[#120e18] shadow-2xl transition-all animate-in zoom-in-95 duration-200 my-auto max-h-[90vh] flex flex-col">
+      {/* Modal Dialog (Bottom sheet on mobile, centered dialog on desktop) */}
+      <div className="relative w-full max-w-2xl overflow-hidden rounded-t-3xl sm:rounded-2xl border-t sm:border border-white/10 bg-[#120e18] shadow-2xl transition-all animate-in slide-in-from-bottom sm:zoom-in-95 duration-200 max-h-[88vh] sm:max-h-[85vh] flex flex-col">
+        {/* Mobile Pull Handle */}
+        <div className="pt-2.5 pb-1 sm:hidden flex justify-center bg-white/[0.02]">
+          <div className="w-10 h-1 rounded-full bg-white/20" />
+        </div>
+
         {/* Header */}
-        <div className="flex items-start justify-between border-b border-white/[0.08] p-5 sm:p-6 bg-white/[0.02]">
+        <div className="flex items-start justify-between border-b border-white/[0.08] px-4 py-3 sm:p-6 bg-white/[0.02]">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-2.5 py-0.5 text-[11px] font-medium text-purple-300">
+              <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium text-purple-300">
                 {project.category || "Case Study"}
               </span>
               {project.isLive ? (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-medium text-emerald-400">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium text-emerald-400">
                   <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   Live Demo
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
+                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium text-zinc-400">
                   <GithubIcon className="size-3" />
                   Source Code
                 </span>
               )}
             </div>
-            <h3 id="case-study-title" className="mt-2 text-xl sm:text-2xl font-bold text-white">
+            <h3 id="case-study-title" className="mt-1.5 text-lg sm:text-2xl font-bold text-white">
               {project.title}
             </h3>
-            <p className="mt-1 text-xs sm:text-sm text-zinc-400">
-              Analisa arsitektur, tantangan teknis, dan solusi penyelesaian
+            <p className="text-[11px] sm:text-xs text-zinc-400">
+              Analisa arsitektur, tantangan teknis, dan keputusan solusi
             </p>
           </div>
           <button
             onClick={onClose}
             aria-label="Tutup modal"
-            className="rounded-full p-2 text-zinc-400 transition hover:bg-white/10 hover:text-white"
+            className="rounded-full p-2 text-zinc-400 transition hover:bg-white/10 hover:text-white shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center"
           >
             <X className="size-5" />
           </button>
         </div>
 
         {/* Content Body (Scrollable) */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5 text-sm">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4 text-xs sm:text-sm">
           {/* Masalah (Why) */}
-          <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-4 sm:p-5">
-            <div className="flex items-center gap-2 font-semibold text-rose-300">
+          <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-3.5 sm:p-4">
+            <div className="flex items-center gap-2 font-semibold text-rose-300 text-xs sm:text-sm">
               <AlertCircle className="size-4 shrink-0" />
               <span>Masalah Nyata (The Problem)</span>
             </div>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-300">
+            <p className="mt-1.5 text-[11px] sm:text-xs sm:text-sm leading-relaxed text-zinc-300">
               {caseStudy.problem}
             </p>
           </div>
 
           {/* Tantangan Teknis */}
-          <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 sm:p-5">
-            <div className="flex items-center gap-2 font-semibold text-amber-300">
+          <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3.5 sm:p-4">
+            <div className="flex items-center gap-2 font-semibold text-amber-300 text-xs sm:text-sm">
               <Cpu className="size-4 shrink-0" />
               <span>Tantangan Arsitektur & Logika</span>
             </div>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-300">
+            <p className="mt-1.5 text-[11px] sm:text-xs sm:text-sm leading-relaxed text-zinc-300">
               {caseStudy.challenge}
             </p>
           </div>
 
           {/* Solusi & Keputusan Teknis */}
-          <div className="rounded-xl border border-[#a87cff]/20 bg-[#a87cff]/5 p-4 sm:p-5">
-            <div className="flex items-center gap-2 font-semibold text-[#c2a4ff]">
+          <div className="rounded-xl border border-[#a87cff]/20 bg-[#a87cff]/5 p-3.5 sm:p-4">
+            <div className="flex items-center gap-2 font-semibold text-[#c2a4ff] text-xs sm:text-sm">
               <Layers className="size-4 shrink-0" />
               <span>Solusi & Pemilihan Stack</span>
             </div>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-300">
+            <p className="mt-1.5 text-[11px] sm:text-xs sm:text-sm leading-relaxed text-zinc-300">
               {caseStudy.solution}
             </p>
           </div>
 
           {/* Hasil & Dampak */}
-          <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
-            <div className="flex items-center gap-2 font-semibold text-emerald-300">
+          <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3.5 sm:p-4">
+            <div className="flex items-center gap-2 font-semibold text-emerald-300 text-xs sm:text-sm">
               <Sparkles className="size-4 shrink-0" />
               <span>Hasil & Dampak</span>
             </div>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-300">
+            <p className="mt-1.5 text-[11px] sm:text-xs sm:text-sm leading-relaxed text-zinc-300">
               {caseStudy.impact}
             </p>
           </div>
 
           {/* Tech Stack List */}
-          <div>
-            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
+          <div className="pt-1">
+            <div className="text-[10px] sm:text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
               Teknologi yang Digunakan
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {project.stack.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-200"
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs text-zinc-200"
                 >
                   {tag}
                 </span>
@@ -163,21 +168,24 @@ export function CaseStudyModal({
           </div>
         </div>
 
-        {/* Footer Actions */}
-        <div className="border-t border-white/[0.08] p-4 sm:p-5 bg-white/[0.02] flex flex-wrap items-center justify-between gap-3">
-          <div className="text-xs text-zinc-500">
-            Dibuat oleh <span className="text-zinc-300 font-medium">Ibnu Anjang</span>
-          </div>
-          <div className="flex items-center gap-2.5">
+        {/* Footer Actions (Sticky bottom bar) */}
+        <div className="border-t border-white/[0.08] p-3 sm:p-4 bg-[#120e18]/95 backdrop-blur-md flex items-center justify-between gap-2.5">
+          <button
+            onClick={onClose}
+            className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-white/10 px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white transition"
+          >
+            Tutup
+          </button>
+          <div className="flex items-center gap-2">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium text-zinc-300 transition hover:bg-white/10 hover:text-white"
+                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-white/15 px-3.5 py-2 text-xs font-medium text-zinc-300 transition hover:bg-white/10 hover:text-white"
               >
                 <GithubIcon className="size-3.5" />
-                <span>GitHub</span>
+                <span className="hidden sm:inline">GitHub</span>
               </a>
             )}
             {project.link && (
@@ -185,9 +193,9 @@ export function CaseStudyModal({
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-4 py-1.5 text-xs font-semibold text-white shadow-md transition hover:brightness-110"
+                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-4 py-2 text-xs font-semibold text-white shadow-md transition hover:brightness-110 active:scale-[0.98]"
               >
-                <span>{project.isLive ? "Buka Website Live" : "Buka Project"}</span>
+                <span>{project.isLive ? "Buka Live Web" : "Buka Project"}</span>
                 <ArrowUpRight className="size-3.5" />
               </a>
             )}

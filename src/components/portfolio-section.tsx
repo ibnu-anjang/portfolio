@@ -15,7 +15,7 @@ function GithubIcon({ className }: { className?: string }) {
 }
 
 function ProjectPreviewPlaceholder({ project }: { project: Project }) {
-  if (project.title.includes("SekolahKu")) {
+  if (project.title.toLowerCase().includes("shoes store")) {
     return (
       <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5 bg-[#0e0a14] border-b border-white/[0.06] font-mono select-none">
         <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
@@ -24,23 +24,114 @@ function ProjectPreviewPlaceholder({ project }: { project: Project }) {
             <span className="size-2 rounded-full bg-amber-500/70" />
             <span className="size-2 rounded-full bg-emerald-500/70" />
           </div>
-          <span className="text-[10px] text-zinc-500 font-sans">sekolahku_controller.dart</span>
+          <span className="text-[10px] text-muted font-sans">app/routers/chatbot.py</span>
         </div>
-        <div className="space-y-1 py-1.5 text-[11px] leading-relaxed">
-          <div className="text-purple-400">{"// Flutter + Riverpod Architecture"}</div>
+        <div className="space-y-1 py-1 text-[11px] leading-relaxed">
+          <div className="text-purple-400">{"# FastAPI + Local Ollama Assistant"}</div>
+          <div>
+            <span className="text-purple-300">@router.post</span>
+            <span className="text-zinc-300">(&quot;/consult&quot;)</span>
+          </div>
+          <div className="pl-3 text-zinc-300">
+            <span className="text-purple-300">async def</span>{" "}
+            <span className="text-amber-300">product_qa</span>
+            <span className="text-zinc-400">(prompt: str):</span>
+          </div>
+          <div className="pl-6 text-zinc-400">return await ollama_client.generate(prompt)</div>
+        </div>
+        <div className="flex items-center gap-2 pt-2 border-t border-white/[0.04] text-[10px] text-emerald-400">
+          <span className="size-1.5 rounded-full bg-emerald-400" />
+          <span>Flutter Mobile · FastAPI · Docker · Ollama</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.title.toLowerCase().includes("clearfix")) {
+    return (
+      <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5 bg-[#0e0a14] border-b border-white/[0.06] font-mono select-none">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-rose-500/70" />
+            <span className="size-2 rounded-full bg-amber-500/70" />
+            <span className="size-2 rounded-full bg-emerald-500/70" />
+          </div>
+          <span className="text-[10px] text-muted font-sans">api/security/rbac.py</span>
+        </div>
+        <div className="space-y-1 py-1 text-[11px] leading-relaxed">
+          <div className="text-purple-400">{"# Facility Verification & Audit Log"}</div>
+          <div>
+            <span className="text-purple-300">async def</span>{" "}
+            <span className="text-amber-300">verify_ticket</span>
+            <span className="text-zinc-400">(ticket_id: UUID, role: Role):</span>
+          </div>
+          <div className="pl-3 text-zinc-400">require_permission(role, Permission.AUDIT)</div>
+          <div className="pl-3 text-zinc-400">return await db.update_status(ticket_id)</div>
+        </div>
+        <div className="flex items-center gap-2 pt-2 border-t border-white/[0.04] text-[10px] text-emerald-400">
+          <span className="size-1.5 rounded-full bg-emerald-400" />
+          <span>FastAPI · PostgreSQL · Supabase RLS</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.title.toLowerCase().includes("fintrack")) {
+    return (
+      <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5 bg-[#0e0a14] border-b border-white/[0.06] font-mono select-none">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-rose-500/70" />
+            <span className="size-2 rounded-full bg-amber-500/70" />
+            <span className="size-2 rounded-full bg-emerald-500/70" />
+          </div>
+          <span className="text-[10px] text-muted font-sans">lib/ledger/journal_notifier.dart</span>
+        </div>
+        <div className="space-y-1 py-1 text-[11px] leading-relaxed">
+          <div className="text-purple-400">{"// Double-Entry Balance Validator"}</div>
           <div>
             <span className="text-purple-300">class</span>{" "}
-            <span className="text-amber-300">SiswaNotifier</span>{" "}
+            <span className="text-amber-300">JournalNotifier</span>{" "}
             <span className="text-purple-300">extends</span>{" "}
             <span className="text-blue-300">StateNotifier</span> &#123;
           </div>
-          <div className="pl-3 text-zinc-400">final FirebaseFirestore _db;</div>
-          <div className="pl-3 text-zinc-500">{"// Realtime cloud sync active"}</div>
+          <div className="pl-3 text-zinc-400">assert(entry.totalDebit == entry.totalCredit);</div>
+          <div className="pl-3 text-zinc-400">await firestore.postJournal(entry);</div>
           <div>&#125;</div>
         </div>
         <div className="flex items-center gap-2 pt-2 border-t border-white/[0.04] text-[10px] text-emerald-400">
           <span className="size-1.5 rounded-full bg-emerald-400" />
-          <span>Flutter · Firebase · Riverpod</span>
+          <span>Flutter · Firebase Firestore · Riverpod</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.title.toLowerCase().includes("nbpay")) {
+    return (
+      <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5 bg-[#0e0a14] border-b border-white/[0.06] font-mono select-none">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-rose-500/70" />
+            <span className="size-2 rounded-full bg-amber-500/70" />
+            <span className="size-2 rounded-full bg-emerald-500/70" />
+          </div>
+          <span className="text-[10px] text-muted font-sans">firmware/esp32_rfid.ino</span>
+        </div>
+        <div className="space-y-1 py-1 text-[11px] leading-relaxed">
+          <div className="text-purple-400">{"// ESP32 RFID Card Authentication"}</div>
+          <div>
+            <span className="text-purple-300">void</span>{" "}
+            <span className="text-amber-300">handleCardTap</span>
+            <span className="text-zinc-400">(byte *uid) &#123;</span>
+          </div>
+          <div className="pl-3 text-zinc-400">String cardId = formatHex(uid);</div>
+          <div className="pl-3 text-zinc-400">Firebase.sendTransaction(cardId, price);</div>
+          <div>&#125;</div>
+        </div>
+        <div className="flex items-center gap-2 pt-2 border-t border-white/[0.04] text-[10px] text-emerald-400">
+          <span className="size-1.5 rounded-full bg-emerald-400" />
+          <span>ESP32 Hardware · Flutter POS · RFID</span>
         </div>
       </div>
     );
@@ -54,23 +145,23 @@ function ProjectPreviewPlaceholder({ project }: { project: Project }) {
           <span className="size-2 rounded-full bg-amber-500/70" />
           <span className="size-2 rounded-full bg-emerald-500/70" />
         </div>
-        <span className="text-[10px] text-zinc-500 font-sans">docker-compose.yml</span>
+        <span className="text-[10px] text-muted font-sans">docker-compose.yml</span>
       </div>
       <div className="space-y-1 py-1.5 text-[11px] leading-relaxed">
         <div className="text-purple-400">services:</div>
         <div className="pl-3">
-          <span className="text-amber-300">web:</span>{" "}
-          <span className="text-zinc-500">{"build: . # PHP 8.2 Apache"}</span>
+          <span className="text-amber-300">api:</span>{" "}
+          <span className="text-muted">{"build: . # Python FastAPI"}</span>
         </div>
         <div className="pl-3">
           <span className="text-amber-300">db:</span>{" "}
-          <span className="text-zinc-500">image: mysql:8.0</span>
+          <span className="text-muted">image: postgres:16-alpine</span>
         </div>
-        <div className="pl-6 text-zinc-500">ports: [&quot;3306:3306&quot;]</div>
+        <div className="pl-6 text-muted">ports: [&quot;5432:5432&quot;]</div>
       </div>
       <div className="flex items-center gap-2 pt-2 border-t border-white/[0.04] text-[10px] text-emerald-400">
         <span className="size-1.5 rounded-full bg-emerald-400" />
-        <span>Self-Hosted Container Stack</span>
+        <span>Containerized Architecture</span>
       </div>
     </div>
   );
@@ -165,7 +256,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Buka ${p.title}`}
-                        className="text-zinc-500 hover:text-[#c2a4ff] transition p-1"
+                        className="text-muted hover:text-[#c2a4ff] transition p-1"
                       >
                         <ArrowUpRight className="size-4 shrink-0" />
                       </a>
@@ -202,7 +293,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                       href={p.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-4 py-2 text-xs font-semibold text-white shadow-md shadow-[#a87cff]/20 transition hover:brightness-110 active:scale-[0.98] w-full sm:w-auto"
+                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-4 py-2 text-xs font-semibold text-white shadow-md shadow-[#a87cff]/20 transition hover:brightness-110 active:scale-[0.98] w-full sm:w-auto"
                     >
                       <span>Buka Live Website</span>
                       <ArrowUpRight className="size-3.5" />
@@ -212,7 +303,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                       href={p.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-xl bg-white/[0.06] border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/10 hover:text-white active:scale-[0.98] w-full sm:w-auto"
+                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-white/[0.06] border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/10 hover:text-white active:scale-[0.98] w-full sm:w-auto"
                     >
                       <GithubIcon className="size-3.5" />
                       <span>Lihat di GitHub</span>
@@ -226,7 +317,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                       <button
                         type="button"
                         onClick={() => setSelectedProject(p)}
-                        className="flex-1 sm:flex-none inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-zinc-300 hover:border-[#c2a4ff]/50 hover:bg-white/[0.06] hover:text-white transition active:scale-[0.98]"
+                        className="flex-1 sm:flex-none inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-zinc-300 hover:border-[#c2a4ff]/50 hover:bg-white/[0.06] hover:text-white transition active:scale-[0.98]"
                       >
                         <BookOpen className="size-3.5 text-[#c2a4ff]" />
                         <span>Studi Kasus Teknis</span>
@@ -238,7 +329,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`GitHub repository ${p.title}`}
-                        className="inline-flex min-h-[42px] size-[42px] items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white transition active:scale-[0.98] shrink-0"
+                        className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white transition active:scale-[0.98] shrink-0"
                       >
                         <GithubIcon className="size-4" />
                       </a>

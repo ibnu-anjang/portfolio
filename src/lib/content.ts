@@ -1,4 +1,5 @@
-// ⚠️ File konfigurasi utama konten portofolio Ibnu Anjang
+// Konfigurasi utama konten portofolio Ibnu Anjang
+// Fokus: Mobile (Flutter) & Backend (Python / FastAPI) & System Security
 
 export type Service = {
   name: string;
@@ -36,13 +37,60 @@ export type Testimonial = {
   quote: string;
 };
 
+export type AboutHighlight = {
+  title: string;
+  description: string;
+};
+
+export type AboutData = {
+  subtitle: string;
+  story: string[];
+  highlights: AboutHighlight[];
+  status: {
+    location: string;
+    availability: string;
+    specialty: string;
+  };
+};
+
+export const aboutData: AboutData = {
+  subtitle: "Fokus pada performa aplikasi mobile Flutter, keandalan backend Python, dan ketahanan arsitektur sistem.",
+  story: [
+    "Saya adalah Mobile & Backend Developer yang memadukan ekosistem Flutter untuk aplikasi mobile multiplatform dengan Python (FastAPI) untuk backend REST API berkinerja tinggi.",
+    "Bagi saya, membangun aplikasi bukan sekadar membuat tampilan berjalan, tetapi memastikan arsitektur di baliknya kokoh: mulai dari validasi skema data, efisiensi query database relasional (PostgreSQL, MariaDB), containerization Docker, hingga penanganan celah keamanan pada alur autentikasi dan otorisasi.",
+    "Selain mobile dan backend, saya juga memiliki pengalaman mengintegrasikan hardware IoT (RFID berbasis ESP32) serta membangun aplikasi web modern (Next.js), sehingga memahami alur data menyeluruh dari client, server, hingga infrastruktur.",
+  ],
+  highlights: [
+    {
+      title: "Mobile Flutter Multiplatform",
+      description:
+        "Membangun aplikasi Android & iOS dengan Flutter dan Riverpod yang responsif, terstruktur rapi, dan efisien dalam pengelolaan state.",
+    },
+    {
+      title: "Backend Python & FastAPI",
+      description:
+        "Merancang REST API cepat dengan validasi data Pydantic, dokumentasi OpenAPI otomatis, dan struktur database relasional yang bersih.",
+    },
+    {
+      title: "Keamanan Sistem & Docker",
+      description:
+        "Menerapkan isolasi container Docker, konfigurasi network tunnel, otentikasi token JWT yang aman, dan proteksi hak akses data (RLS).",
+    },
+  ],
+  status: {
+    location: "Indonesia",
+    availability: "Tersedia untuk project baru",
+    specialty: "Flutter, Python (FastAPI) & Security",
+  },
+};
+
 export const site = {
   name: "Ibnu Anjang",
-  role: "Junior Fullstack Web & Mobile Developer",
-  tagline: "Membangun website & aplikasi yang rapi, cepat, dan siap produksi.",
-  taglineAccent: "rapi, cepat",
+  role: "Mobile & Backend Developer",
+  tagline: "Membangun aplikasi mobile Flutter, REST API Python terstruktur, dan arsitektur sistem yang aman.",
+  taglineAccent: "aman, cepat, dan andal",
   about:
-    "Saya adalah Junior Fullstack Web & Mobile Developer yang fokus membangun produk digital nyata, bukan sekadar prototipe. Spesialisasi saya meliputi ekosistem Next.js & TypeScript untuk web modern berkinerja tinggi, serta Flutter untuk aplikasi mobile Android/iOS. Saya terbiasa memikirkan arsitektur data, efisiensi state management, dan kemudahan penggunaan bagi pengguna akhir.",
+    "Saya berfokus pada pengembangan aplikasi mobile multiplatform dengan Flutter dan backend API berbasis Python (FastAPI). Terbiasa menangani skema database relasional (PostgreSQL, MariaDB), containerization dengan Docker, serta memperhatikan keamanan sistem data seperti otentikasi aman, Row Level Security, dan proteksi endpoint.",
   email: "ibnumaulidi08@gmail.com",
   avatarUrl: "/avatar.jpg",
   whatsapp: "6285179940204",
@@ -52,41 +100,46 @@ export const site = {
   instagram: "",
 };
 
-// Skill/tool yang muncul di Tech Stack marquee
+export const waConsultHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
+  `Halo ${site.name}, saya ingin berdiskusi mengenai project aplikasi mobile atau backend.`,
+)}`;
+
+// Skill dan tool utama yang muncul di Tech Stack marquee
 export const skills = [
-  "Next.js",
-  "TypeScript",
-  "React",
-  "Tailwind CSS",
   "Flutter",
   "Dart",
-  "Riverpod",
-  "Firebase",
-  "Supabase",
-  "PostgreSQL",
-  "Node.js",
+  "Python",
+  "FastAPI",
   "Docker",
+  "Riverpod",
+  "PostgreSQL",
+  "MariaDB",
+  "Supabase",
+  "Firebase",
+  "Linux / Security",
+  "Cloudflare",
+  "Next.js",
+  "TypeScript",
   "Git",
-  "Vercel",
 ];
 
 export const services: Service[] = [
   {
-    name: "Web Application Development",
-    description:
-      "Pengembangan web modern dari landing page responsif hingga aplikasi web interaktif & dashboard. Menggunakan Next.js, TypeScript, dan Tailwind CSS dengan arsitektur bersih, cepat, dan SEO-ready.",
-    priceText: "Konsultasi Estimasi Gratis · Sesuai Scope",
-  },
-  {
     name: "Mobile App Development",
     description:
-      "Aplikasi mobile cross-platform untuk Android dan iOS menggunakan Flutter & Dart. Terintegrasi Firebase/Supabase, manajemen state Riverpod yang terstruktur, dan performa mulus.",
+      "Pengembangan aplikasi mobile multiplatform Android & iOS menggunakan Flutter dan Dart. Menerapkan manajemen state Riverpod, caching lokal, integrasi REST API, dan antarmuka responsif sesuai standar Material Design.",
     priceText: "Konsultasi Estimasi Gratis · Sesuai Scope",
   },
   {
-    name: "Backend, Database & DevOps",
+    name: "Backend API & Data Architecture",
     description:
-      "Perancangan skema database relasional (PostgreSQL/MySQL), REST API, Row Level Security (RLS) di Supabase, containerization Docker, serta automated deployment ke Vercel/Cloud.",
+      "Pembangunan REST API berkinerja tinggi menggunakan Python (FastAPI). Perancangan skema database relasional (PostgreSQL, MariaDB), validasi skema data ketat dengan Pydantic, dan integrasi model AI/LLM lokal.",
+    priceText: "Konsultasi Estimasi Gratis · Sesuai Scope",
+  },
+  {
+    name: "System Security & Containerization",
+    description:
+      "Penerapan containerization Docker untuk isolasi aplikasi, konfigurasi Cloudflare Tunnel dan reverse proxy, proteksi otentikasi token JWT, audit keamanan endpoint dasar, serta Row Level Security (RLS).",
     priceText: "Konsultasi Estimasi Gratis · Sesuai Scope",
   },
 ];
@@ -98,54 +151,139 @@ export type ProcessStep = {
 
 export const processSteps: ProcessStep[] = [
   {
-    title: "Diskusi & Pemahaman Masalah",
+    title: "Diskusi Masalah & Kebutuhan Sistem",
     description:
-      "Membahas latar belakang kebutuhan Anda, target pengguna, dan fungsi utama yang ingin dibangun secara santai dan transparan.",
+      "Membahas alur kerja aplikasi, spesifikasi endpoint API, skema data, dan batasan teknis secara transparan sebelum mulai coding.",
   },
   {
-    title: "Penawaran & Rencana Kerja",
+    title: "Perancangan Arsitektur & Lingkungan",
     description:
-      "Menyusun daftar ruang lingkup fitur (scope), target jadwal rilis yang realistis, dan estimasi biaya tanpa biaya tersembunyi.",
+      "Menyusun skema database, struktur modular proyek (Flutter/FastAPI), serta konfigurasi container Docker agar lingkungan kerja konsisten.",
   },
   {
-    title: "Tahap Pengembangan Bertahap",
+    title: "Pengembangan Bertahap & Validasi",
     description:
-      "Coding dengan standar modern, update berkala lewat live preview sehingga Anda bisa memberi masukan langsung selama proses.",
+      "Menulis kode bersih dengan penanganan error yang jelas, pengujian integrasi API, dan pembaruan progres rutin.",
   },
   {
-    title: "Testing, Rilis & Garansi",
+    title: "Deployment, Pengamanan & Serah Terima",
     description:
-      "Pemeriksaan fungsionalitas, deployment ke server/hosting produksi, penyerahan source code penuh, dan pendampingan pasca-rilis.",
+      "Uji fungsionalitas menyeluruh, konfigurasi environment produksi yang aman, serta penyerahan repositori kode lengkap tanpa biaya tersembunyi.",
   },
 ];
 
-// Project nyata dari portfolio & GitHub ibnu-anjang
+// Project nyata dari GitHub ibnu-anjang yang merefleksikan spesialisasi Flutter, Python, dan Security
 export const projects: Project[] = [
   {
+    title: "Shoes Store",
+    category: "Full-Stack Mobile App & AI",
+    description:
+      "Aplikasi e-commerce mobile end-to-end yang mengintegrasikan frontend Flutter dengan backend Python (FastAPI), database MariaDB dalam Docker, serta asisten chatbot AI lokal (Ollama).",
+    stack: ["Flutter", "FastAPI", "Python", "MariaDB", "Docker", "Ollama"],
+    link: "https://github.com/ibnu-anjang/shoes_store",
+    githubUrl: "https://github.com/ibnu-anjang/shoes_store",
+    imageUrl: "",
+    isLive: false,
+    caseStudy: {
+      problem:
+        "Membangun aplikasi mobile e-commerce mandiri membutuhkan alur transaksi katalog yang cepat, manajemen status pesanan terstruktur, dan asisten produk tanpa bergantung pada API AI pihak ketiga berbiaya langganan tinggi.",
+      challenge:
+        "Menghubungkan aplikasi mobile Flutter dengan backend lokal yang berjalan di container Docker, serta mengintegrasikan model LLM lokal agar respons tanya jawab produk tetap cepat di jaringan lokal.",
+      solution:
+        "Membangun REST API modular dengan FastAPI, mengelola lifecycle pesanan (UNPAID ke COMPLETED) di MariaDB, mengemas seluruh sistem backend dengan Docker Compose, dan memanfaatkan Ollama (model qwen2.5) untuk asisten belanja interaktif.",
+      impact:
+        "Solusi fullstack mandiri yang siap di-deploy secara portabel dengan Docker dan dapat diakses publik secara aman via Cloudflare Tunnel.",
+    },
+  },
+  {
+    title: "ClearFix",
+    category: "Backend Platform & Facility Management",
+    description:
+      "Platform backend pelaporan dan manajemen fasilitas sekolah yang menghubungkan pelapor dengan petugas lewat alur verifikasi bertingkat dan audit log yang aman.",
+    stack: ["FastAPI", "Python", "Supabase", "PostgreSQL", "Docker"],
+    link: "https://github.com/ibnu-anjang/ClearFix",
+    githubUrl: "https://github.com/ibnu-anjang/ClearFix",
+    imageUrl: "",
+    isLive: false,
+    caseStudy: {
+      problem:
+        "Pelaporan kerusakan fasilitas di lingkungan sekolah sering kali tidak terdokumentasi rapi, tanpa riwayat status penanganan yang jelas, dan rawan laporan palsu.",
+      challenge:
+        "Merancang skema database yang mendukung alur validasi tiket bertingkat dengan hak akses pengguna yang terisolasi aman antara pelapor dan frontliner.",
+      solution:
+        "Membangun REST API menggunakan FastAPI dan PostgreSQL (Supabase) dengan kontrol otorisasi berbasis peran (Role-Based Access Control) dan container Docker untuk kemudahan deployment.",
+      impact:
+        "Alur pelaporan fasilitas sekolah terdokumentasi transparan dengan status verifikasi terstruktur dan log aktivitas yang tercatat rapi.",
+    },
+  },
+  {
+    title: "FinTrack",
+    category: "Mobile Accounting App",
+    description:
+      "Aplikasi mobile pencatatan keuangan double-entry dengan Chart of Accounts (CoA), jurnal transaksi debit-kredit otomatis, dan dukungan multi-workspace berbasis Flutter.",
+    stack: ["Flutter", "Dart", "Firebase", "Riverpod"],
+    link: "https://github.com/ibnu-anjang/FinTrack",
+    githubUrl: "https://github.com/ibnu-anjang/FinTrack",
+    imageUrl: "",
+    isLive: false,
+    caseStudy: {
+      problem:
+        "Banyak aplikasi pencatatan keuangan personal atau kas kecil hanya mencatat arus kas satu arah, sehingga tidak akurat untuk melacak aset, liabilitas, dan ekuitas yang sebenarnya.",
+      challenge:
+        "Mengimplementasikan aturan akuntansi berpasangan (keseimbangan debit dan kredit) dan multi-workspace di perangkat mobile dengan pembaruan state yang reaktif dan bebas inkonsistensi.",
+      solution:
+        "Menggunakan Flutter dengan state management Riverpod dan model data Freezed untuk menjamin immutability state. Sinkronisasi data real-time dengan Firebase Firestore.",
+      impact:
+        "Pengguna dapat mengelola pembukuan formal dengan bagan akun standar langsung dari smartphone dengan validasi keseimbangan debit-kredit otomatis.",
+    },
+  },
+  {
+    title: "NBPay",
+    category: "IoT & Digital Payment POS",
+    description:
+      "Sistem pembayaran digital kantin sekolah berbasis kartu RFID dan microcontroller ESP32 yang terhubung ke aplikasi mobile Flutter untuk admin, penjual, dan siswa.",
+    stack: ["Flutter", "Dart", "Firebase", "ESP32", "IoT"],
+    link: "https://github.com/ibnu-anjang/NBPay",
+    githubUrl: "https://github.com/ibnu-anjang/NBPay",
+    imageUrl: "",
+    isLive: false,
+    caseStudy: {
+      problem:
+        "Transaksi tunai di kantin sekolah rawan kehilangan uang fisik, antrean lama saat jam istirahat, dan kurangnya rekapitulasi penjualan harian bagi pihak sekolah dan mitra kantin.",
+      challenge:
+        "Mengintegrasikan pembaca kartu fisik RFID pada modul hardware ESP32 dengan sistem database cloud dan aplikasi mobile secara aman serta berlatensi rendah.",
+      solution:
+        "Mengembangkan aplikasi mobile Flutter untuk tiga peran (admin, penjual, siswa) yang tersinkronisasi via Firebase, dipadukan dengan firmware ESP32 untuk pemindaian kartu RFID instan.",
+      impact:
+        "Proses transaksi kantin berjalan tanpa uang tunai dengan verifikasi saldo kartu secara instan dan pencatatan transaksi yang transparan.",
+    },
+  },
+  {
     title: "Trading Jurnal",
-    category: "Fullstack Web App",
+    category: "Fullstack Web Analytics",
     description:
       "Platform pencatatan dan evaluasi trading harian otomatis untuk trader independen, menggantikan spreadsheet manual dengan analitik visual real-time.",
     stack: ["Next.js", "Supabase", "Tailwind CSS", "TypeScript"],
     link: "https://trading-jurnal-five.vercel.app",
+    githubUrl: "https://github.com/ibnu-anjang/Trading-Jurnal",
     imageUrl: "/projects/trading-jurnal.webp",
     isLive: true,
     caseStudy: {
       problem:
-        "Banyak trader pemula kesulitan mengevaluasi konsistensi dan emosi trading harian karena pencatatan manual di spreadsheet membingungkan, lambat, dan rawan salah formula.",
+        "Trader pemula kesulitan mengevaluasi konsistensi dan emosi trading harian karena pencatatan manual di spreadsheet membingungkan, lambat, dan rawan salah formula.",
       challenge:
-        "Menyediakan kalkulasi analitik real-time (Winrate, Profit Factor, Risk-to-Reward) dan grafik pertumbuhan modal (equity curve) yang instan, sembari mengamankan data transaksi tiap trader agar terisolasi sempurna.",
+        "Menyediakan kalkulasi analitik real-time (Winrate, Profit Factor, Risk-to-Reward) dan grafik pertumbuhan modal (equity curve), sembari mengamankan data transaksi tiap trader agar terisolasi sempurna.",
       solution:
-        "Membangun frontend dengan Next.js App Router dan TypeScript untuk komputasi instan di sisi browser, dipadukan dengan Supabase (PostgreSQL) serta Row Level Security (RLS) untuk isolasi data pengguna yang aman tanpa perlu backend server terpisah yang rumit.",
+        "Membangun frontend dengan Next.js App Router dan TypeScript untuk komputasi di sisi browser, dipadukan dengan Supabase (PostgreSQL) serta Row Level Security (RLS) untuk isolasi data pengguna yang aman.",
       impact:
-        "Berhasil live di Vercel, memungkinkan trader mencatat jurnal transaksi dalam hitungan detik dengan visualisasi analitik performa yang langsung membantu pengambilan keputusan.",
+        "Live di Vercel. Trader bisa mencatat transaksi lalu langsung melihat winrate, profit factor, dan equity curve tanpa repot mengelola rumus spreadsheet.",
     },
   },
   {
     title: "GAMES-HUB",
     category: "Interactive Web Portal",
     description:
-      "Portal kumpulan game web modern yang dapat langsung dimainkan instan di browser mobile maupun desktop tanpa instalasi dan bebas iklan mengganggu.",
+      "Portal kumpulan game web modern yang dapat langsung dimainkan instan di browser mobile maupun desktop tanpa instalasi dan bebas iklan yang mengganggu.",
     stack: ["Next.js", "Tailwind CSS", "TypeScript"],
     link: "https://games-hub-beryl-nine.vercel.app",
     githubUrl: "https://github.com/ibnu-anjang/GAMES-HUB",
@@ -153,53 +291,13 @@ export const projects: Project[] = [
     isLive: true,
     caseStudy: {
       problem:
-        "Sebagian besar situs mini-game web dipenuhi iklan pop-up berat dan tampilan yang sering rusak atau lambat saat diakses lewat layar smartphone.",
+        "Sebagian besar situs mini-game web dipenuhi iklan pop-up berat dan tampilan yang sering lambat saat diakses lewat layar smartphone.",
       challenge:
-        "Mengoptimasi rendering game berbasis canvas & web di Next.js 16 dan Tailwind v4 agar responsif di seluruh variasi ukuran layar HP dengan latensi input yang minim.",
+        "Mengoptimasi rendering game berbasis canvas & web di Next.js dan Tailwind agar responsif di seluruh variasi ukuran layar HP dengan latensi input yang minim.",
       solution:
-        "Menerapkan arsitektur komponen React 19 modular dengan isolasi loop game per komponen, pengoptimalan gambar aset ke format WebP terkompresi, dan navigasi instan via Turbopack.",
+        "Menerapkan arsitektur komponen React modular dengan isolasi loop game per komponen, pengoptimalan gambar aset ke format WebP terkompresi, dan navigasi antar halaman via Turbopack.",
       impact:
-        "Kecepatan loading instan (< 1 detik) di perangkat mobile, mendukung navigasi sentuh (touchscreen) dan kontrol keyboard di desktop.",
-    },
-  },
-  {
-    title: "SekolahKu (Data Siswa)",
-    category: "Mobile App (Android/iOS)",
-    description:
-      "Aplikasi mobile manajemen data siswa, kelas, dan absensi guru berbasis Flutter dengan sinkronisasi cloud real-time Firebase.",
-    stack: ["Flutter", "Firebase", "Riverpod", "Dart"],
-    link: "https://github.com/ibnu-anjang/Data-Management-Siswa",
-    imageUrl: "",
-    isLive: false,
-    caseStudy: {
-      problem:
-        "Pencatatan data siswa dan presensi di sekolah kerap masih bergantung pada dokumen fisik atau berkas terpisah yang menyulitkan guru saat butuh pembaruan data secara cepat di lapangan.",
-      challenge:
-        "Menyediakan antarmuka mobile yang ringkas dan ramah bagi pengguna awam, dengan sistem manajemen state yang kokoh agar data tidak konflik saat ada input serentak.",
-      solution:
-        "Memilih Flutter & Dart dengan arsitektur Riverpod untuk pemisahan logika bisnis dan UI yang bersih. Menggunakan Firebase Firestore sebagai penyimpanan dokumen cloud yang sinkron secara real-time.",
-      impact:
-        "Aplikasi mobile yang ringan dengan navigasi cepat Material 3, kode terstruktur bersih dan terdokumentasi lengkap di repositori open-source GitHub.",
-    },
-  },
-  {
-    title: "Simple Cash Tracker",
-    category: "Self-Hosted Backend Tool",
-    description:
-      "Aplikasi pencatatan arus kas operasional masuk-keluar yang mudah di-deploy mandiri (self-hosted) dengan Docker untuk UMKM atau organisasi kecil.",
-    stack: ["PHP", "MySQL", "Docker"],
-    link: "https://github.com/ibnu-anjang/Simple-Cash-Tracker",
-    imageUrl: "",
-    isLive: false,
-    caseStudy: {
-      problem:
-        "UMKM atau organisasi kas kecil sering kali belum membutuhkan software akuntansi rumit dan mahal, hanya butuh transparansi arus kas masuk-keluar yang mudah dikelola.",
-      challenge:
-        "Membangun aplikasi web dengan dependensi seminimal mungkin, namun tetap mudah dijalankan di komputer manapun tanpa pusing urusan ketidakcocokan versi PHP/database lokal.",
-      solution:
-        "Menyusun kode PHP murni & MySQL yang modular dan menyertakan konfigurasi Docker (`Dockerfile` & `docker-compose.yml`) agar sistem dapat langsung menyala dengan satu perintah terminal.",
-      impact:
-        "Dapat dijalankan secara fleksibel baik di server lokal (XAMPP/Docker) maupun cloud VPS mandiri, memberikan kendali 100% atas data privasi keuangan.",
+        "Live di Vercel dan bisa dimainkan langsung di browser HP maupun desktop tanpa instalasi, dengan navigasi sentuh dan kontrol keyboard.",
     },
   },
 ];

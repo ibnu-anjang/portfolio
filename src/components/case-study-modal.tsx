@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   X,
   ArrowUpRight,
@@ -28,11 +28,36 @@ export function CaseStudyModal({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!isOpen) return;
 
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const panel = panelRef.current;
+    panel?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !panel) return;
+
+      const focusables = Array.from(
+        panel.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
+      );
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
 
     const originalOverflow = document.body.style.overflow;
@@ -42,6 +67,7 @@ export function CaseStudyModal({
     return () => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused?.focus();
     };
   }, [isOpen, onClose]);
 
@@ -63,7 +89,11 @@ export function CaseStudyModal({
       />
 
       {/* Modal Dialog (Bottom sheet on mobile, centered dialog on desktop) */}
-      <div className="relative w-full max-w-2xl overflow-hidden rounded-t-3xl sm:rounded-2xl border-t sm:border border-white/10 bg-[#120e18] shadow-2xl transition-all animate-in slide-in-from-bottom sm:zoom-in-95 duration-200 max-h-[88vh] sm:max-h-[85vh] flex flex-col">
+      <div
+        ref={panelRef}
+        tabIndex={-1}
+        className="relative w-full max-w-2xl overflow-hidden rounded-t-3xl sm:rounded-2xl border-t sm:border border-white/10 bg-[#120e18] shadow-2xl transition-all animate-in slide-in-from-bottom sm:zoom-in-95 duration-200 max-h-[88vh] sm:max-h-[85vh] flex flex-col"
+      >
         {/* Mobile Pull Handle */}
         <div className="pt-2.5 pb-1 sm:hidden flex justify-center bg-white/[0.02]">
           <div className="w-10 h-1 rounded-full bg-white/20" />
@@ -92,7 +122,7 @@ export function CaseStudyModal({
               {project.title}
             </h3>
             <p className="text-[11px] sm:text-xs text-zinc-400">
-              Analisa arsitektur, tantangan teknis, dan keputusan solusi
+              Analisis arsitektur, tantangan teknis, dan keputusan solusi
             </p>
           </div>
           <button
@@ -175,7 +205,7 @@ export function CaseStudyModal({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-xs font-medium text-zinc-300 transition hover:bg-white/10 hover:text-white"
+              className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-xs font-medium text-zinc-300 transition hover:bg-white/10 hover:text-white"
             >
               <GithubIcon className="size-4" />
               <span className="hidden sm:inline">Repository</span>
@@ -186,7 +216,7 @@ export function CaseStudyModal({
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-5 py-2 text-xs font-semibold text-white shadow-md transition hover:brightness-110 active:scale-[0.98]"
+              className="flex-1 sm:flex-initial inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-5 py-2 text-xs font-semibold text-white shadow-md transition hover:brightness-110 active:scale-[0.98]"
             >
               <span>{project.isLive ? "Buka Live Website" : "Buka Project"}</span>
               <ArrowUpRight className="size-3.5" />

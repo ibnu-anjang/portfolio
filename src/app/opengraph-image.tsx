@@ -1,6 +1,9 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/content";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibnuportofolio.vercel.app";
+const domain = siteUrl.replace(/^https?:\/\//, "");
+
 export const alt = `${site.name} · ${site.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -95,7 +98,7 @@ export default function OgImage() {
             display: "flex",
           }}
         >
-          ibnuportofolio.vercel.app
+          {domain}
         </div>
       </div>
     ),

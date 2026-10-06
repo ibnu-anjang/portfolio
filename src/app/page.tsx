@@ -1,14 +1,15 @@
 import {
   ArrowRight,
   ArrowUpRight,
-  Globe,
   Mail,
   MessageCircle,
   Quote,
   Server,
+  ShieldCheck,
   Smartphone,
 } from "lucide-react";
 import {
+  aboutData,
   achievements,
   processSteps,
   projects,
@@ -16,11 +17,35 @@ import {
   site,
   skills,
   testimonials,
+  waConsultHref,
 } from "@/lib/content";
 import { CursorGlow } from "@/components/cursor-glow";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { LeadForm } from "@/components/lead-form";
 import { Reveal } from "@/components/reveal";
 import { PortfolioSection } from "@/components/portfolio-section";
+
+function CtaBand({ title, text }: { title: string; text: string }) {
+  return (
+    <Reveal>
+      <div className="flex flex-col gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+        <div>
+          <h3 className="text-base font-semibold text-white sm:text-lg">{title}</h3>
+          <p className="mt-1 text-xs text-muted sm:text-sm">{text}</p>
+        </div>
+        <a
+          href={waConsultHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-5 py-3 text-xs font-semibold text-white shadow-lg shadow-[#a87cff]/25 transition hover:brightness-110 active:scale-[0.98] sm:px-6 sm:text-sm"
+        >
+          <MessageCircle className="size-4" />
+          Konsultasi Gratis
+        </a>
+      </div>
+    </Reveal>
+  );
+}
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -38,7 +63,7 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
-const serviceIcons = [Globe, Smartphone, Server];
+const serviceIcons = [Smartphone, Server, ShieldCheck];
 
 function GradientText({ children }: { children: React.ReactNode }) {
   return (
@@ -78,6 +103,7 @@ export default function Home() {
   return (
     <>
       <CursorGlow />
+      <FloatingWhatsApp />
 
       <header className="fixed inset-x-0 top-0 z-30 border-b border-white/[0.06] bg-[#0b080c]/85 backdrop-blur-xl">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -87,8 +113,14 @@ export default function Home() {
           </a>
           <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-zinc-400">
             <a
+              href="#tentang"
+              className="hidden md:block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white"
+            >
+              Tentang
+            </a>
+            <a
               href="#portfolio"
-              className="rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white"
+              className="hidden sm:block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white"
             >
               Portofolio
             </a>
@@ -100,7 +132,7 @@ export default function Home() {
             </a>
             <a
               href="#kontak"
-              className="ml-1 sm:ml-2 inline-flex min-h-[38px] sm:min-h-[40px] items-center rounded-full bg-[#eae5ec] px-3.5 sm:px-4 py-2 font-medium text-black transition hover:bg-[#c2a4ff]"
+              className="ml-1 sm:ml-2 inline-flex min-h-[44px] items-center rounded-full bg-[#eae5ec] px-3.5 sm:px-4 py-2 font-medium text-black transition hover:bg-[#c2a4ff]"
             >
               Hubungi
             </a>
@@ -110,7 +142,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative flex min-h-[100dvh] flex-col justify-between overflow-hidden pt-20 pb-6 sm:py-24">
+        <section className="relative flex min-h-[92dvh] sm:min-h-[100dvh] flex-col justify-center overflow-hidden pt-20 pb-8 sm:py-24">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(194,164,255,0.12)_0%,transparent_50%),radial-gradient(circle_at_85%_35%,rgba(168,124,255,0.1)_0%,transparent_50%)]"
@@ -120,32 +152,30 @@ export default function Home() {
               {/* Left Column: Hook & Value Proposition */}
               <div className="lg:col-span-7">
                 <Reveal>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] p-1.5 pr-3 text-xs text-zinc-300 backdrop-blur">
+                  <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] p-1.5 pr-4 text-xs text-zinc-300 backdrop-blur">
                     {site.avatarUrl && (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={site.avatarUrl}
                         alt={site.name}
-                        className="size-6 sm:size-7 rounded-full object-cover ring-1 ring-[#c2a4ff]/50"
+                        className="size-7 sm:size-8 rounded-full object-cover ring-2 ring-[#c2a4ff]/40 shadow-sm"
                       />
                     )}
-                    <span className="font-semibold text-white whitespace-nowrap">{site.name}</span>
-                    <span className="text-zinc-600">·</span>
-                    <span className="inline-flex items-center gap-1.5 text-emerald-400 whitespace-nowrap text-[11px] sm:text-xs">
+                    <span className="inline-flex items-center gap-1.5 text-emerald-400 whitespace-nowrap text-[11px] sm:text-xs font-medium">
                       <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Tersedia untuk project
+                      Tersedia untuk project baru
                     </span>
                   </div>
                 </Reveal>
                 <Reveal delay={60}>
                   <p className="mt-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#c2a4ff]">
-                    Junior Fullstack Web & Mobile Developer
+                    {site.role}
                   </p>
                 </Reveal>
                 <Reveal delay={100}>
-                  <h1 className="mt-2 text-2xl xs:text-3xl sm:text-5xl lg:text-[3.8rem] font-bold leading-[1.18] sm:leading-[1.08] tracking-tight text-white">
-                    Bikin Website & Aplikasi Mobile yang{" "}
-                    <GradientText>Rapi, Cepat & Siap Pakai.</GradientText>
+                  <h1 className="mt-2 text-2xl min-[480px]:text-3xl sm:text-5xl lg:text-[3.8rem] font-bold leading-[1.18] sm:leading-[1.08] tracking-tight text-white">
+                    Bangun Aplikasi Mobile & Backend API yang{" "}
+                    <GradientText>Aman, Cepat, dan Andal.</GradientText>
                   </h1>
                 </Reveal>
                 <Reveal delay={160}>
@@ -154,17 +184,19 @@ export default function Home() {
                   </p>
                 </Reveal>
                 <Reveal delay={220}>
-                  <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+                  <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
                     <a
-                      href="#kontak"
-                      className="group inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 rounded-xl sm:rounded-full bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
+                      href={waConsultHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-[#a87cff]/25 transition hover:shadow-[#a87cff]/45 hover:brightness-110 active:scale-[0.98]"
                     >
-                      Minta Penawaran
-                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                      <MessageCircle className="size-4" />
+                      <span>Konsultasi Gratis</span>
                     </a>
                     <a
                       href="#portfolio"
-                      className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 rounded-xl sm:rounded-full border border-white/15 px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
+                      className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.02] px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/5 active:scale-[0.98]"
                     >
                       Lihat Portofolio
                     </a>
@@ -181,14 +213,14 @@ export default function Home() {
                   </div>
                 </Reveal>
                 <Reveal delay={280}>
-                  <div className="mt-5 sm:mt-8 flex items-center gap-2.5 sm:gap-3 text-zinc-500">
+                  <div className="mt-5 sm:mt-8 flex items-center gap-2.5 sm:gap-3 text-muted">
                     {site.github && (
                       <a
                         href={site.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
-                        className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                        className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                       >
                         <GithubIcon className="size-4 sm:size-5" />
                       </a>
@@ -199,7 +231,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
-                        className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                        className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                       >
                         <LinkedinIcon className="size-4 sm:size-5" />
                       </a>
@@ -207,16 +239,16 @@ export default function Home() {
                     <a
                       href={`mailto:${site.email}`}
                       aria-label="Email"
-                      className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                      className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                     >
                       <Mail className="size-4 sm:size-5" />
                     </a>
                     <a
-                      href={`https://wa.me/${site.whatsapp}`}
+                      href={waConsultHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="WhatsApp"
-                      className="flex size-10 sm:size-11 items-center justify-center rounded-xl sm:rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
+                      className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:text-white"
                     >
                       <MessageCircle className="size-4 sm:size-5" />
                     </a>
@@ -224,8 +256,8 @@ export default function Home() {
                 </Reveal>
               </div>
 
-              {/* Right Column: Visual Hook Showcase Card (Desktop only, so mobile doesn't get clipped/bloated) */}
-              <div className="hidden lg:block lg:col-span-5">
+              {/* Right Column: Visual Hook Showcase Card (Responsive: visible on mobile for immediate visual hook) */}
+              <div className="mt-8 lg:mt-0 lg:col-span-5">
                 <Reveal delay={150}>
                   <div className="relative">
                     <div
@@ -262,22 +294,33 @@ export default function Home() {
                               <p className="text-[10px] font-medium text-[#c2a4ff]">Web Analytics App</p>
                               <h4 className="text-xs sm:text-sm font-bold text-white">Trading Jurnal</h4>
                             </div>
-                            <a
-                              href="https://trading-jurnal-five.vercel.app"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 rounded-md bg-white/15 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur hover:bg-[#a87cff] transition"
-                            >
-                              Buka <ArrowUpRight className="size-3" />
-                            </a>
+                            <div className="flex items-center gap-1.5">
+                              <a
+                                href="https://github.com/ibnu-anjang/Trading-Jurnal"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GitHub Trading Jurnal"
+                                className="inline-flex size-6 items-center justify-center rounded-md bg-white/15 text-white backdrop-blur hover:bg-[#a87cff] transition"
+                              >
+                                <GithubIcon className="size-3" />
+                              </a>
+                              <a
+                                href="https://trading-jurnal-five.vercel.app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 rounded-md bg-white/15 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur hover:bg-[#a87cff] transition"
+                              >
+                                Buka <ArrowUpRight className="size-3" />
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Secondary Showcase Mini Cards (Hidden on small mobile to avoid huge scroll, visible on desktop/tablet) */}
-                      <div className="mt-3 space-y-2">
+                      {/* Secondary Showcase Mini Cards (Hidden on small mobile to keep hero compact, visible on desktop/tablet) */}
+                      <div className="mt-3 space-y-2 hidden sm:block">
                         <a
-                          href="https://github.com/ibnu-anjang/Data-Management-Siswa"
+                          href="https://github.com/ibnu-anjang/shoes_store"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-2.5 sm:p-3 transition hover:border-[#c2a4ff]/30 hover:bg-white/[0.05]"
@@ -288,38 +331,38 @@ export default function Home() {
                             </div>
                             <div>
                               <h5 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition">
-                                SekolahKu (Data Siswa)
+                                Shoes Store (E-Commerce)
                               </h5>
-                              <p className="text-[10px] text-zinc-500">Flutter Mobile · Firebase</p>
+                              <p className="text-[10px] text-muted">Flutter Mobile · FastAPI · Docker</p>
                             </div>
                           </div>
-                          <ArrowUpRight className="size-3 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
+                          <ArrowUpRight className="size-3 text-muted transition group-hover:text-[#c2a4ff]" />
                         </a>
 
                         <a
-                          href="https://games-hub-beryl-nine.vercel.app"
+                          href="https://github.com/ibnu-anjang/ClearFix"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-2.5 sm:p-3 transition hover:border-[#c2a4ff]/30 hover:bg-white/[0.05]"
                         >
                           <div className="flex items-center gap-2.5">
                             <div className="flex size-8 items-center justify-center rounded-lg bg-[#a87cff]/10 text-[#c2a4ff] ring-1 ring-white/10">
-                              <Globe className="size-3.5" />
+                              <Server className="size-3.5" />
                             </div>
                             <div>
                               <h5 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition">
-                                GAMES-HUB
+                                ClearFix (Facility System)
                               </h5>
-                              <p className="text-[10px] text-zinc-500">Next.js · Tailwind CSS · Live</p>
+                              <p className="text-[10px] text-muted">FastAPI · PostgreSQL · Supabase RLS</p>
                             </div>
                           </div>
-                          <ArrowUpRight className="size-3 text-zinc-500 transition group-hover:text-[#c2a4ff]" />
+                          <ArrowUpRight className="size-3 text-muted transition group-hover:text-[#c2a4ff]" />
                         </a>
                       </div>
 
                       {/* Card Footer */}
                       <div className="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] sm:text-[11px] text-zinc-400">
-                        <span>Spesialisasi: Next.js, Flutter</span>
+                        <span>Fokus: Flutter, FastAPI, System Security</span>
                         <a
                           href="#portfolio"
                           className="text-[#c2a4ff] hover:underline"
@@ -334,12 +377,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Subtle scroll cue (Clean flow, anchored nicely at bottom) */}
-          <div className="relative z-10 pt-4 pb-2 flex justify-center pointer-events-none">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] sm:text-xs text-zinc-400 backdrop-blur">
+          {/* Subtle scroll cue (Clean flow, interactive anchor to portfolio) */}
+          <div className="relative z-10 pt-4 pb-2 flex justify-center">
+            <a
+              href="#portfolio"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[10px] sm:text-xs text-zinc-400 backdrop-blur transition hover:border-[#c2a4ff]/40 hover:text-white"
+            >
               <span>Scroll untuk jelajahi</span>
               <span className="inline-block animate-bounce text-[#c2a4ff]">↓</span>
-            </div>
+            </a>
           </div>
         </section>
 
@@ -352,12 +398,121 @@ export default function Home() {
                   <div className="text-2xl sm:text-4xl font-bold">
                     <GradientText>{a.metric}</GradientText>
                   </div>
-                  <div className="mt-2 text-xs sm:text-sm text-zinc-500">{a.label}</div>
+                  <div className="mt-2 text-xs sm:text-sm text-muted">{a.label}</div>
                 </div>
               ))}
             </div>
           </section>
         )}
+
+        {/* About Me (Dual-purpose: Personal Story + Work Ethic) */}
+        <section id="tentang" className="scroll-mt-16 border-t border-white/[0.06] py-16 sm:py-28 relative overflow-hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(194,164,255,0.08)_0%,transparent_40%),radial-gradient(circle_at_85%_70%,rgba(168,124,255,0.07)_0%,transparent_40%)]"
+          />
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <Reveal>
+              <BigHeading>Tentang Saya</BigHeading>
+              <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-400 max-w-2xl mx-auto">
+                {aboutData.subtitle}
+              </p>
+            </Reveal>
+
+            <div className="mt-10 sm:mt-16 grid gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
+              {/* Left Column: Personal Profile Card */}
+              <div className="lg:col-span-5">
+                <Reveal delay={100}>
+                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 text-center backdrop-blur-sm">
+                    <div className="relative mx-auto size-32 sm:size-40 overflow-hidden rounded-2xl ring-2 ring-[#c2a4ff]/30 shadow-xl shadow-[#a87cff]/10">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={site.avatarUrl}
+                        alt={site.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+
+                    <h3 className="mt-4 text-lg sm:text-xl font-bold text-white">{site.name}</h3>
+                    <p className="text-xs sm:text-sm font-medium text-[#c2a4ff] mt-0.5">{site.role}</p>
+
+                    {/* Personal Status Badges */}
+                    <div className="mt-5 space-y-2.5 text-left border-t border-white/[0.06] pt-4 text-xs">
+                      <div className="flex items-center justify-between text-zinc-400">
+                        <span>Basis</span>
+                        <span className="font-medium text-zinc-200">📍 {aboutData.status.location}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-zinc-400">
+                        <span>Ketersediaan</span>
+                        <span className="inline-flex items-center gap-1 font-medium text-emerald-400">
+                          <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          {aboutData.status.availability}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-zinc-400">
+                        <span>Fokus Utama</span>
+                        <span className="font-medium text-zinc-200">{aboutData.status.specialty}</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 flex flex-col gap-2">
+                      <a
+                        href="#kontak"
+                        className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-white/[0.08] border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-100 transition hover:bg-white/15 hover:text-white active:scale-[0.98]"
+                      >
+                        <Mail className="size-3.5 text-[#c2a4ff]" />
+                        <span>Ajak Diskusi / Terhubung</span>
+                      </a>
+                      {site.cvUrl && (
+                        <a
+                          href={site.cvUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl text-xs text-zinc-400 hover:text-white transition"
+                        >
+                          <span>Unduh Resume (CV)</span>
+                          <ArrowUpRight className="size-3" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* Right Column: Story & Principles */}
+              <div className="lg:col-span-7 space-y-6">
+                <Reveal delay={150}>
+                  <div className="space-y-4 text-xs sm:text-base leading-relaxed text-zinc-300">
+                    {aboutData.story.map((paragraph, index) => (
+                      <p key={index} className="leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </Reveal>
+
+                {/* 3 Values / Pillars */}
+                <div className="pt-2">
+                  <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#c2a4ff] mb-3">
+                    Prinsip & Nilai Kerja
+                  </h4>
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    {aboutData.highlights.map((item, i) => (
+                      <Reveal key={item.title} delay={200 + i * 80}>
+                        <div className="h-full rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 transition hover:border-[#c2a4ff]/30">
+                          <h5 className="font-bold text-xs sm:text-sm text-white">{item.title}</h5>
+                          <p className="mt-1.5 text-[11px] sm:text-xs leading-relaxed text-zinc-400">
+                            {item.description}
+                          </p>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Tech Stack */}
         <section className="relative overflow-hidden py-16 sm:py-28">
@@ -368,8 +523,8 @@ export default function Home() {
           <div className="relative">
             <Reveal>
               <BigHeading>Tech Stack</BigHeading>
-              <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
-                Teknologi yang saya gunakan untuk web & mobile
+              <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-muted">
+                Teknologi yang saya gunakan untuk mobile, backend API, dan infrastruktur sistem
               </p>
             </Reveal>
             <div className="mt-8 sm:mt-14 space-y-3 sm:space-y-5">
@@ -379,13 +534,54 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services */}
+        {/* Portfolio (Karya Nyata - Presented first before services) */}
+        {projects.length > 0 && (
+          <section id="portfolio" className="scroll-mt-16 border-t border-white/[0.06] py-16 sm:py-28">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
+              <Reveal>
+                <BigHeading>Portofolio</BigHeading>
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-muted">
+                  Project nyata yang pernah saya bangun beserta studi kasus arsitekturnya
+                </p>
+              </Reveal>
+              <PortfolioSection projects={projects} />
+              {site.github && (
+                <Reveal>
+                  <div className="mt-10 sm:mt-12 text-center">
+                    <p className="text-xs sm:text-sm text-muted">Mau lihat source code dan project lainnya?</p>
+                    <a
+                      href={site.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-xs sm:text-sm font-medium text-[#c2a4ff] transition hover:border-[#c2a4ff]/50 hover:text-white"
+                    >
+                      <GithubIcon className="size-4" /> Kunjungi GitHub saya
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                  </div>
+                </Reveal>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* CTA setelah bukti kerja */}
+        <section className="py-10 sm:py-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <CtaBand
+              title="Sudah lihat hasil kerjanya?"
+              text="Ceritakan kebutuhan Anda. Saya bantu susun ruang lingkup dan estimasi biayanya, tanpa biaya konsultasi."
+            />
+          </div>
+        </section>
+
+        {/* Services (Untuk Klien / Bisnis) */}
         {services.length > 0 && (
           <section id="layanan" className="scroll-mt-16 border-t border-white/[0.06] py-16 sm:py-28">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
                 <BigHeading>Layanan</BigHeading>
-                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-muted">
                   Solusi digital yang bisa saya bangun untuk kebutuhan Anda
                 </p>
               </Reveal>
@@ -420,13 +616,23 @@ export default function Home() {
           </section>
         )}
 
-        {/* Process */}
+        {/* CTA setelah layanan */}
+        <section className="py-10 sm:py-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <CtaBand
+              title="Belum yakin butuh yang mana?"
+              text="Diskusikan dulu saja. Saya bantu pilih pendekatan yang paling masuk akal buat kebutuhan dan budget Anda."
+            />
+          </div>
+        </section>
+
+        {/* Process (Alur Kerja Terstruktur) */}
         {processSteps.length > 0 && (
           <section className="border-t border-white/[0.06] py-16 sm:py-28">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
                 <BigHeading>Cara Kerja</BigHeading>
-                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-muted">
                   Alur pengerjaan terstruktur dari konsultasi awal hingga rilis
                 </p>
               </Reveal>
@@ -455,44 +661,13 @@ export default function Home() {
           </section>
         )}
 
-        {/* Portfolio */}
-        {projects.length > 0 && (
-          <section id="portfolio" className="scroll-mt-16 border-t border-white/[0.06] py-16 sm:py-28">
-            <div className="mx-auto max-w-6xl px-4 sm:px-6">
-              <Reveal>
-                <BigHeading>Portofolio</BigHeading>
-                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">
-                  Project nyata yang pernah saya bangun beserta studi kasus arsitekturnya
-                </p>
-              </Reveal>
-              <PortfolioSection projects={projects} />
-              {site.github && (
-                <Reveal>
-                  <div className="mt-10 sm:mt-12 text-center">
-                    <p className="text-xs sm:text-sm text-zinc-500">Mau lihat source code dan project lainnya?</p>
-                    <a
-                      href={site.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-xs sm:text-sm font-medium text-[#c2a4ff] transition hover:border-[#c2a4ff]/50 hover:text-white"
-                    >
-                      <GithubIcon className="size-4" /> Kunjungi GitHub saya
-                      <ArrowUpRight className="size-4" />
-                    </a>
-                  </div>
-                </Reveal>
-              )}
-            </div>
-          </section>
-        )}
-
         {/* Testimonials (Hanya muncul jika ada review nyata) */}
         {testimonials.length > 0 && (
           <section className="border-t border-white/[0.06] py-16 sm:py-28">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <Reveal>
                 <BigHeading>Testimoni</BigHeading>
-                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-zinc-500">Apa kata klien</p>
+                <p className="mt-3 sm:mt-4 text-center text-xs sm:text-base text-muted">Apa kata klien</p>
               </Reveal>
               <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {testimonials.map((t) => (
@@ -506,7 +681,7 @@ export default function Home() {
                     </blockquote>
                     <figcaption className="mt-5 text-xs sm:text-sm font-medium">
                       {t.author}
-                      {t.role && <span className="font-normal text-zinc-500"> · {t.role}</span>}
+                      {t.role && <span className="font-normal text-muted"> · {t.role}</span>}
                     </figcaption>
                   </figure>
                 ))}
@@ -528,7 +703,7 @@ export default function Home() {
                 <p className="mt-3 sm:mt-5 text-base sm:text-lg text-zinc-300">
                   Punya ide project? <GradientText>Mari diskusikan bersama.</GradientText>
                 </p>
-                <p className="mt-2 text-xs sm:text-sm text-zinc-500">
+                <p className="mt-2 text-xs sm:text-sm text-muted">
                   Ceritakan kebutuhan Anda, saya siap bantu mewujudkan aplikasi yang tepat guna.
                 </p>
               </div>
@@ -546,7 +721,7 @@ export default function Home() {
                 <Mail className="size-4 text-[#c2a4ff]" /> {site.email}
               </a>
               <a
-                href={`https://wa.me/${site.whatsapp}`}
+                href={waConsultHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 transition hover:border-[#c2a4ff]/50 hover:text-white"
@@ -559,7 +734,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-white/[0.06] py-8 sm:py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:px-6 text-xs sm:text-sm text-zinc-500 sm:flex-row text-center sm:text-left">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:px-6 text-xs sm:text-sm text-muted sm:flex-row text-center sm:text-left">
           <span>
             Didesain & dikembangkan oleh {site.name} © {new Date().getFullYear()}
           </span>

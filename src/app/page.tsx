@@ -1,6 +1,9 @@
 import {
   ArrowRight,
   ArrowUpRight,
+  FileText,
+  Handshake,
+  Layers,
   Mail,
   MessageCircle,
   Quote,
@@ -419,95 +422,253 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <div className="mt-10 sm:mt-16 grid gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
-              {/* Left Column: Personal Profile Card */}
-              <div className="lg:col-span-5">
+            <div className="mt-10 sm:mt-16 grid gap-8 lg:grid-cols-12 lg:gap-10 lg:items-start">
+              {/* Left Column: Sleek Sticky Profile Glassmorphism Card (lg:col-span-4) */}
+              <div className="lg:col-span-4 lg:sticky lg:top-24">
                 <Reveal delay={100}>
-                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 text-center backdrop-blur-sm">
-                    <div className="relative mx-auto size-32 sm:size-40 overflow-hidden rounded-2xl ring-2 ring-[#c2a4ff]/30 shadow-xl shadow-[#a87cff]/10">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={site.avatarUrl}
-                        alt={site.name}
-                        className="h-full w-full object-cover"
-                      />
+                  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#120e18]/90 p-5 sm:p-6 text-center backdrop-blur-xl shadow-2xl transition hover:border-[#c2a4ff]/35">
+                    {/* Ambient subtle violet edge glow */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-[#a87cff]/15 blur-2xl"
+                    />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-[#c2a4ff]/10 blur-2xl"
+                    />
+
+                    {/* Well-proportioned photo profile */}
+                    <div className="relative mx-auto size-36 sm:size-44 overflow-hidden rounded-2xl ring-2 ring-[#c2a4ff]/35 shadow-xl shadow-[#a87cff]/10 group">
+                      {site.avatarUrl && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={site.avatarUrl}
+                          alt={site.name}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
                     </div>
 
-                    <h3 className="mt-4 text-lg sm:text-xl font-bold text-white">{site.name}</h3>
-                    <p className="text-xs sm:text-sm font-medium text-[#c2a4ff] mt-0.5">{site.role}</p>
+                    <h3 className="mt-4 text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      {site.name}
+                    </h3>
+                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-[#c2a4ff]">
+                      {site.role}
+                    </p>
 
-                    {/* Personal Status Badges */}
-                    <div className="mt-5 space-y-2.5 text-left border-t border-white/[0.06] pt-4 text-xs">
+                    {/* Availability Status Pill */}
+                    <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                      <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      {aboutData.status.availability}
+                    </div>
+
+                    {/* Quick Info Box (Basis & Specialty) */}
+                    <div className="mt-4 space-y-2 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 text-left text-xs">
                       <div className="flex items-center justify-between text-zinc-400">
                         <span>Basis</span>
                         <span className="font-medium text-zinc-200">📍 {aboutData.status.location}</span>
                       </div>
                       <div className="flex items-center justify-between text-zinc-400">
-                        <span>Ketersediaan</span>
-                        <span className="inline-flex items-center gap-1 font-medium text-emerald-400">
-                          <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          {aboutData.status.availability}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between text-zinc-400">
-                        <span>Fokus Utama</span>
+                        <span>Fokus</span>
                         <span className="font-medium text-zinc-200">{aboutData.status.specialty}</span>
                       </div>
                     </div>
 
-                    <div className="mt-6 flex flex-col gap-2">
-                      <a
-                        href="#kontak"
-                        className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-white/[0.08] border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-100 transition hover:bg-white/15 hover:text-white active:scale-[0.98]"
-                      >
-                        <Mail className="size-3.5 text-[#c2a4ff]" />
-                        <span>Ajak Diskusi / Terhubung</span>
-                      </a>
-                      {site.cvUrl && (
+                    {/* Social Media Links Bar */}
+                    <div className="mt-4 flex items-center justify-center gap-2">
+                      {site.github && (
                         <a
-                          href={site.cvUrl}
+                          href={site.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl text-xs text-zinc-400 hover:text-white transition"
+                          aria-label="GitHub"
+                          className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:bg-white/[0.08] hover:text-white"
                         >
-                          <span>Unduh Resume (CV)</span>
-                          <ArrowUpRight className="size-3" />
+                          <GithubIcon className="size-4" />
                         </a>
                       )}
+                      {site.linkedin && (
+                        <a
+                          href={site.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="LinkedIn"
+                          className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:bg-white/[0.08] hover:text-white"
+                        >
+                          <LinkedinIcon className="size-4" />
+                        </a>
+                      )}
+                      <a
+                        href={`mailto:${site.email}`}
+                        aria-label="Email"
+                        className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:bg-white/[0.08] hover:text-white"
+                      >
+                        <Mail className="size-4" />
+                      </a>
+                      <a
+                        href={waConsultHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 transition hover:border-[#c2a4ff]/50 hover:bg-white/[0.08] hover:text-white"
+                      >
+                        <MessageCircle className="size-4" />
+                      </a>
+                    </div>
+
+                    {/* Action Buttons: Ajak Diskusi & Unduh CV */}
+                    <div className="mt-4 flex flex-col gap-2">
+                      <a
+                        href="#kontak"
+                        className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#a87cff] to-[#8b5cf6] px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-[#a87cff]/20 transition hover:brightness-110 active:scale-[0.98]"
+                      >
+                        <MessageCircle className="size-3.5" />
+                        <span>Ajak Diskusi / Hubungi</span>
+                      </a>
+                      <a
+                        href={site.cvUrl || waConsultHref}
+                        target={site.cvUrl ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-4 py-2.5 text-xs font-semibold text-zinc-200 transition hover:border-[#c2a4ff]/50 hover:bg-white/10 hover:text-white active:scale-[0.98]"
+                      >
+                        <FileText className="size-3.5 text-[#c2a4ff]" />
+                        <span>Unduh Resume (CV)</span>
+                        <ArrowUpRight className="size-3 text-zinc-400" />
+                      </a>
                     </div>
                   </div>
                 </Reveal>
               </div>
 
-              {/* Right Column: Story & Principles */}
-              <div className="lg:col-span-7 space-y-6">
-                <Reveal delay={150}>
-                  <div className="space-y-4 text-xs sm:text-base leading-relaxed text-zinc-300">
-                    {aboutData.story.map((paragraph, index) => (
-                      <p key={index} className="leading-relaxed">
-                        {paragraph}
-                      </p>
-                    ))}
+              {/* Right Column: Narrative Block + True Bento Highlight Grid (lg:col-span-8) */}
+              <div className="lg:col-span-8 space-y-6">
+                {/* Dynamic Narrative Story Card */}
+                <Reveal delay={120}>
+                  <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8 backdrop-blur-sm">
+                    {/* Subtle top-right ambient glow */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute right-0 top-0 size-64 rounded-full bg-[radial-gradient(circle,rgba(194,164,255,0.08)_0%,transparent_70%)]"
+                    />
+
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#c2a4ff]">
+                      Filosofi & Pendekatan Kerja
+                    </span>
+
+                    <h3 className="mt-2 text-xl sm:text-2xl font-bold text-white leading-snug">
+                      Membangun Aplikasi Mobile & Backend yang{" "}
+                      <GradientText>Kokoh, Teruji, dan Aman.</GradientText>
+                    </h3>
+
+                    <div className="mt-4 space-y-3.5 text-xs sm:text-sm md:text-[15px] leading-relaxed text-zinc-300">
+                      {aboutData.story.map((paragraph, index) => (
+                        <p key={index} className="leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </Reveal>
 
-                {/* 3 Values / Pillars */}
-                <div className="pt-2">
-                  <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#c2a4ff] mb-3">
-                    Prinsip & Nilai Kerja
-                  </h4>
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {aboutData.highlights.map((item, i) => (
-                      <Reveal key={item.title} delay={200 + i * 80}>
-                        <div className="h-full rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 transition hover:border-[#c2a4ff]/30">
-                          <h5 className="font-bold text-xs sm:text-sm text-white">{item.title}</h5>
-                          <p className="mt-1.5 text-[11px] sm:text-xs leading-relaxed text-zinc-400">
-                            {item.description}
-                          </p>
+                {/* True Bento Grid (Asymmetric & Balanced) */}
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {/* Bento Card 1: Pengalaman (Span 2) */}
+                  <Reveal delay={180} className="sm:col-span-2">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.04]">
+                      <div>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="inline-block rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#c2a4ff]">
+                            {aboutData.highlights[0]?.tag || "Pengalaman"}
+                          </span>
+                          <div className="flex size-9 items-center justify-center rounded-xl bg-[#a87cff]/10 text-[#c2a4ff] ring-1 ring-white/10">
+                            <Layers className="size-4" />
+                          </div>
                         </div>
-                      </Reveal>
-                    ))}
-                  </div>
+
+                        <h4 className="mt-4 text-sm sm:text-base font-bold text-white group-hover:text-[#c2a4ff] transition">
+                          {aboutData.highlights[0]?.title || "Mobile & Backend"}
+                        </h4>
+                        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">
+                          {aboutData.highlights[0]?.description}
+                        </p>
+                      </div>
+
+                      {/* Tech Chips */}
+                      <div className="mt-5 flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.06]">
+                        {["Flutter", "FastAPI", "PostgreSQL", "Riverpod"].map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-[10px] font-medium text-zinc-400"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+
+                  {/* Bento Card 2: Fokus Utama (Span 1) */}
+                  <Reveal delay={240} className="sm:col-span-1">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.04]">
+                      <div>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="inline-block rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#c2a4ff]">
+                            {aboutData.highlights[1]?.tag || "Fokus Utama"}
+                          </span>
+                          <div className="flex size-9 items-center justify-center rounded-xl bg-[#a87cff]/10 text-[#c2a4ff] ring-1 ring-white/10">
+                            <ShieldCheck className="size-4" />
+                          </div>
+                        </div>
+
+                        <h4 className="mt-4 text-sm sm:text-base font-bold text-white group-hover:text-[#c2a4ff] transition">
+                          {aboutData.highlights[1]?.title || "Keamanan Sistem"}
+                        </h4>
+                        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-400">
+                          {aboutData.highlights[1]?.description}
+                        </p>
+                      </div>
+
+                      {/* Tech Chips */}
+                      <div className="mt-5 flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.06]">
+                        {["Docker", "Supabase RLS", "JWT"].map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-[10px] font-medium text-zinc-400"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+
+                  {/* Bento Card 3: Kolaborasi & Proses (Span 3 - Full Width Banner) */}
+                  <Reveal delay={300} className="sm:col-span-3">
+                    <div className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6 transition hover:border-[#c2a4ff]/40 hover:bg-white/[0.04]">
+                      <div className="max-w-2xl">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="inline-block rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#c2a4ff]">
+                            {aboutData.highlights[2]?.tag || "Kolaborasi"}
+                          </span>
+                          <span className="text-[11px] text-zinc-500 font-medium">Standar Profesional</span>
+                        </div>
+
+                        <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-[#c2a4ff] transition">
+                          {aboutData.highlights[2]?.title || "Proses Transparan"}
+                        </h4>
+                        <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-zinc-400">
+                          {aboutData.highlights[2]?.description}
+                        </p>
+                      </div>
+
+                      <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-white/[0.06]">
+                        <div className="flex size-10 items-center justify-center rounded-xl bg-[#a87cff]/10 text-[#c2a4ff] ring-1 ring-white/10">
+                          <Handshake className="size-5" />
+                        </div>
+                        <span className="text-[11px] font-medium text-zinc-400">Update Rutin & Garansi</span>
+                      </div>
+                    </div>
+                  </Reveal>
                 </div>
               </div>
             </div>

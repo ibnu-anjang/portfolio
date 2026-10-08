@@ -38,12 +38,15 @@ export type Testimonial = {
 };
 
 export type AboutHighlight = {
+  tag: string;
   title: string;
   description: string;
+  iconType: "experience" | "focus" | "collaboration";
 };
 
 export type AboutData = {
   subtitle: string;
+  lead: string;
   story: string[];
   highlights: AboutHighlight[];
   status: {
@@ -55,26 +58,32 @@ export type AboutData = {
 
 export const aboutData: AboutData = {
   subtitle: "Fokus pada performa aplikasi mobile Flutter, keandalan backend Python, dan ketahanan arsitektur sistem.",
+  lead: "Membangun aplikasi mobile Flutter dan REST API Python (FastAPI) dengan arsitektur data yang kokoh, teruji, dan aman.",
   story: [
-    "Saya adalah Mobile & Backend Developer yang memadukan ekosistem Flutter untuk aplikasi mobile multiplatform dengan Python (FastAPI) untuk backend REST API berkinerja tinggi.",
-    "Bagi saya, membangun aplikasi bukan sekadar membuat tampilan berjalan, tetapi memastikan arsitektur di baliknya kokoh: mulai dari validasi skema data, efisiensi query database relasional (PostgreSQL, MariaDB), containerization Docker, hingga penanganan celah keamanan pada alur autentikasi dan otorisasi.",
-    "Selain mobile dan backend, saya juga memiliki pengalaman mengintegrasikan hardware IoT (RFID berbasis ESP32) serta membangun aplikasi web modern (Next.js), sehingga memahami alur data menyeluruh dari client, server, hingga infrastruktur.",
+    "Bagi saya, ngoding bukan sekadar membuat tampilan antarmuka di layar, melainkan memastikan fondasi sistem di baliknya kokoh: mulai dari validasi skema data, efisiensi query database relasional (PostgreSQL, MariaDB), containerization dengan Docker, hingga proteksi keamanan pada alur autentikasi dan otorisasi.",
+    "Selain mobile dan backend, saya juga memiliki pengalaman dalam integrasi hardware IoT (seperti pemindai RFID berbasis ESP32) serta web dashboard, memberikan pemahaman menyeluruh terhadap alur data dari perangkat pengguna hingga server produksi.",
   ],
   highlights: [
     {
-      title: "Mobile Flutter Multiplatform",
+      tag: "Pengalaman",
+      title: "Mobile & Backend",
       description:
-        "Membangun aplikasi Android & iOS dengan Flutter dan Riverpod yang responsif, terstruktur rapi, dan efisien dalam pengelolaan state.",
+        "Membangun aplikasi Android & iOS dengan Flutter yang terhubung ke REST API FastAPI, database relasional, dan arsitektur modular yang rapi.",
+      iconType: "experience",
     },
     {
-      title: "Backend Python & FastAPI",
+      tag: "Fokus Utama",
+      title: "Keamanan Sistem",
       description:
-        "Merancang REST API cepat dengan validasi data Pydantic, dokumentasi OpenAPI otomatis, dan struktur database relasional yang bersih.",
+        "Penerapan containerization Docker, validasi skema data, otentikasi token JWT yang aman, serta Row Level Security (RLS) di Supabase.",
+      iconType: "focus",
     },
     {
-      title: "Keamanan Sistem & Docker",
+      tag: "Kolaborasi",
+      title: "Proses Transparan",
       description:
-        "Menerapkan isolasi container Docker, konfigurasi network tunnel, otentikasi token JWT yang aman, dan proteksi hak akses data (RLS).",
+        "Pengerjaan terstruktur dengan pembaruan progres rutin, dokumentasi rapi, komunikasi terbuka, dan penyerahan source code penuh.",
+      iconType: "collaboration",
     },
   ],
   status: {
